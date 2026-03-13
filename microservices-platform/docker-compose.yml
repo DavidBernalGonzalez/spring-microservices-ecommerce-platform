@@ -1,0 +1,48 @@
+services:
+
+  db-products:
+    image: mysql:8.0
+    container_name: db-products
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_products
+      MYSQL_USER: davidBernal
+      MYSQL_PASSWORD: admin1234
+      MYSQL_ROOT_PASSWORD: admin1234
+    ports:
+      - "3307:3306"
+    volumes:
+      - products-data:/var/lib/mysql
+
+  db-orders:
+    image: mysql:8.0
+    container_name: db-orders
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_orders
+      MYSQL_USER: davidBernal
+      MYSQL_PASSWORD: admin1234
+      MYSQL_ROOT_PASSWORD: admin1234
+    ports:
+      - "3308:3306"
+    volumes:
+      - orders-data:/var/lib/mysql
+
+  db-inventory:
+    image: mysql:8.0
+    container_name: db-inventory
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_inventory
+      MYSQL_USER: davidBernal
+      MYSQL_PASSWORD: admin1234
+      MYSQL_ROOT_PASSWORD: admin1234
+    ports:
+      - "3309:3306"
+    volumes:
+      - inventory-data:/var/lib/mysql
+
+volumes:
+  products-data:
+  orders-data:
+  inventory-data:
