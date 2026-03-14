@@ -39,7 +39,7 @@ public class OrderService {
 
     public List<OrderResponseDto> getAll() {
         log.info("[{}] Fetching all orders", SERVICE);
-        return orderRepository.findAll()
+        return orderRepository.findAllWithItems()          // 👈 usamos el fetch join
                 .stream()
                 .map(OrderMapper::toDto)
                 .toList();
@@ -52,7 +52,8 @@ public class OrderService {
         Order incomingOrder = OrderMapper.toEntity(request);
 
         if (incomingOrder.getIdempotencyKey() != null && !incomingOrder.getIdempotencyKey().isBlank()) {
-            Optional<Order> existingOrder = orderRepository.findByIdempotencyKey(incomingOrder.getIdempotencyKey());
+            Optional<Order> existingOrder =
+                    orderRepository.findWithItemsByIdempotencyKey(incomingOrder.getIdempotencyKey()); // 👈 también fetch join
 
             if (existingOrder.isPresent()) {
                 log.info("[{}] Idempotent request detected returning existing order orderId={}",

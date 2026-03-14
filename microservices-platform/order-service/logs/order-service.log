@@ -3791,3 +3791,196 @@ org.hibernate.LazyInitializationException: Cannot lazily initialize collection o
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
 2026-03-14 20:08:50 [http-nio-8082-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.hibernate.LazyInitializationException: Cannot lazily initialize collection of role 'com.microservice.order.entities.Order.orderItems' with key '1' (no session)]
+2026-03-14 20:34:19 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-03-14 20:34:19 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-14 20:34:19 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:34:19 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-14 20:34:19 [Thread-1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:34:19 [Thread-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-14 20:34:19 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-14 20:34:19 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-14 20:34:20 [restartedMain] INFO  c.m.order.OrderServiceApplication - Starting OrderServiceApplication using Java 25.0.2 with PID 63840 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\order-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\order-service)
+2026-03-14 20:34:20 [restartedMain] INFO  c.m.order.OrderServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-14 20:34:20 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-14 20:34:20 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interface.
+2026-03-14 20:34:20 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=b1406a63-7d43-3b75-8914-3584e7acd654
+2026-03-14 20:34:20 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2026-03-14 20:34:20 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:34:20 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-14 20:34:20 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14 20:34:20 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 799 ms
+2026-03-14 20:34:20 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-14 20:34:20 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-14 20:34:20 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-03-14 20:34:20 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6959dd10
+2026-03-14 20:34:20 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-03-14 20:34:20 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-14 20:34:20 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3308/ms_orders]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_orders/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-14 20:34:21 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-14 20:34:21 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-14 20:34:21 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:34:21 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2026-03-14 20:34:21 [restartedMain] INFO  c.m.order.OrderServiceApplication - Started OrderServiceApplication in 1.71 seconds (process running for 2123.638)
+2026-03-14 20:34:21 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-14 20:34:21 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-14 20:34:21 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-14 20:36:00 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2026-03-14 20:36:00 [Thread-7] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-14 20:36:00 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:36:00 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-14 20:36:00 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:36:00 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-14 20:36:00 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-03-14 20:36:00 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-03-14 20:36:00 [restartedMain] INFO  c.m.order.OrderServiceApplication - Starting OrderServiceApplication using Java 25.0.2 with PID 63840 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\order-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\order-service)
+2026-03-14 20:36:00 [restartedMain] INFO  c.m.order.OrderServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-14 20:36:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-14 20:36:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2026-03-14 20:36:01 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=b1406a63-7d43-3b75-8914-3584e7acd654
+2026-03-14 20:36:01 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2026-03-14 20:36:01 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:36:01 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-14 20:36:01 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14 20:36:01 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 499 ms
+2026-03-14 20:36:01 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-14 20:36:01 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-14 20:36:01 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-03-14 20:36:01 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62ea4841
+2026-03-14 20:36:01 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-03-14 20:36:01 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-14 20:36:01 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3308/ms_orders]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_orders/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-14 20:36:01 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-14 20:36:01 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-14 20:36:02 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:36:02 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2026-03-14 20:36:02 [restartedMain] INFO  c.m.order.OrderServiceApplication - Started OrderServiceApplication in 1.379 seconds (process running for 2224.032)
+2026-03-14 20:36:02 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-14 20:36:02 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-14 20:36:02 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-14 20:37:22 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-03-14 20:37:22 [Thread-13] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-14 20:37:22 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:37:22 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-14 20:37:22 [Thread-13] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:37:22 [Thread-13] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-14 20:37:22 [Thread-13] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2026-03-14 20:37:22 [Thread-13] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2026-03-14 20:37:23 [restartedMain] INFO  c.m.order.OrderServiceApplication - Starting OrderServiceApplication using Java 25.0.2 with PID 63840 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\order-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\order-service)
+2026-03-14 20:37:23 [restartedMain] INFO  c.m.order.OrderServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-14 20:37:23 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-14 20:37:23 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interface.
+2026-03-14 20:37:23 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=b1406a63-7d43-3b75-8914-3584e7acd654
+2026-03-14 20:37:23 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2026-03-14 20:37:23 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:37:23 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-14 20:37:23 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14 20:37:23 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 495 ms
+2026-03-14 20:37:23 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-14 20:37:23 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-14 20:37:23 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2026-03-14 20:37:23 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68ff9480
+2026-03-14 20:37:23 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2026-03-14 20:37:23 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-14 20:37:23 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3308/ms_orders]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_orders/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-14 20:37:23 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-14 20:37:23 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-14 20:37:24 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2026-03-14 20:37:24 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2026-03-14 20:37:24 [restartedMain] INFO  c.m.order.OrderServiceApplication - Started OrderServiceApplication in 1.135 seconds (process running for 2306.049)
+2026-03-14 20:37:24 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-14 20:37:24 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-14 20:37:24 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-14 20:37:29 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14 20:37:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-14 20:37:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-03-14 20:37:29 [http-nio-8082-exec-2] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 1 items
+2026-03-14 20:37:29 [http-nio-8082-exec-2] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:37:29 [http-nio-8082-exec-2] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:37:29 [http-nio-8082-exec-2] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:37:42 [http-nio-8082-exec-5] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:37:42 [http-nio-8082-exec-5] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:37:42 [http-nio-8082-exec-5] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:37:42 [http-nio-8082-exec-5] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:37:43 [http-nio-8082-exec-4] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:37:43 [http-nio-8082-exec-4] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:37:43 [http-nio-8082-exec-4] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:37:43 [http-nio-8082-exec-4] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:37:44 [http-nio-8082-exec-8] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:37:44 [http-nio-8082-exec-8] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:37:44 [http-nio-8082-exec-8] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:37:44 [http-nio-8082-exec-8] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:37:46 [http-nio-8082-exec-6] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:37:46 [http-nio-8082-exec-6] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:37:46 [http-nio-8082-exec-6] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:37:46 [http-nio-8082-exec-6] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:37:51 [http-nio-8082-exec-7] INFO  c.m.o.controllers.OrderController - GET /api/orders - fetching all orders
+2026-03-14 20:37:51 [http-nio-8082-exec-7] INFO  c.m.order.services.OrderService - [order-service] Fetching all orders
+2026-03-14 20:37:51 [http-nio-8082-exec-7] INFO  c.m.o.controllers.OrderController - GET /api/orders - returned 1 orders
+2026-03-14 20:37:58 [http-nio-8082-exec-3] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:37:58 [http-nio-8082-exec-3] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:37:58 [http-nio-8082-exec-3] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:37:58 [http-nio-8082-exec-3] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:39:01 [http-nio-8082-exec-1] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:39:01 [http-nio-8082-exec-1] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:39:01 [http-nio-8082-exec-1] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:39:01 [http-nio-8082-exec-1] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:39:05 [http-nio-8082-exec-2] INFO  c.m.o.controllers.OrderController - GET /api/orders - fetching all orders
+2026-03-14 20:39:05 [http-nio-8082-exec-2] INFO  c.m.order.services.OrderService - [order-service] Fetching all orders
+2026-03-14 20:39:05 [http-nio-8082-exec-2] INFO  c.m.o.controllers.OrderController - GET /api/orders - returned 1 orders
+2026-03-14 20:53:47 [http-nio-8082-exec-8] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:53:47 [http-nio-8082-exec-8] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:53:47 [http-nio-8082-exec-8] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:53:47 [http-nio-8082-exec-8] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:53:53 [http-nio-8082-exec-6] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:53:53 [http-nio-8082-exec-6] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:53:53 [http-nio-8082-exec-6] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:53:53 [http-nio-8082-exec-6] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:53:54 [http-nio-8082-exec-7] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:53:54 [http-nio-8082-exec-7] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:53:54 [http-nio-8082-exec-7] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:53:54 [http-nio-8082-exec-7] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:53:55 [http-nio-8082-exec-3] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:53:55 [http-nio-8082-exec-3] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:53:55 [http-nio-8082-exec-3] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:53:55 [http-nio-8082-exec-3] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:53:57 [http-nio-8082-exec-9] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:53:57 [http-nio-8082-exec-9] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:53:57 [http-nio-8082-exec-9] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:53:57 [http-nio-8082-exec-9] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
+2026-03-14 20:53:58 [http-nio-8082-exec-10] INFO  c.m.o.controllers.OrderController - POST /api/orders - received request with idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000 and 2 items
+2026-03-14 20:53:58 [http-nio-8082-exec-10] INFO  c.m.order.services.OrderService - [order-service] Creating order idempotencyKey=checkout-20260309-510e8400-e29b-41d4-a716-446655440000
+2026-03-14 20:53:58 [http-nio-8082-exec-10] INFO  c.m.order.services.OrderService - [order-service] Idempotent request detected returning existing order orderId=1
+2026-03-14 20:53:58 [http-nio-8082-exec-10] INFO  c.m.o.controllers.OrderController - Idempotent request detected. Returning existing order orderId=1 orderNumber=ORD-000001
