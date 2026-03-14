@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.microservice.product.entities.Product;
+import com.microservice.product.dto.request.ProductRequestDto;
+import com.microservice.product.dto.response.ProductResponseDto;
 import com.microservice.product.services.ProductService;
 
 import jakarta.validation.Valid;
@@ -26,11 +27,11 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAll() {
+    public ResponseEntity<List<ProductResponseDto>> getAll() {
 
         log.info("[{}] GET /api/products - fetching all products", SERVICE);
 
-        List<Product> products = productService.findAll();
+        List<ProductResponseDto> products = productService.findAll();
 
         log.info("[{}] GET /api/products - returned {} products", SERVICE, products.size());
 
@@ -38,11 +39,11 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getById(@PathVariable Long id) {
+    public ResponseEntity<ProductResponseDto> getById(@PathVariable Long id) {
 
         log.info("[{}] GET /api/products/{} - fetching product", SERVICE, id);
 
-        Product product = productService.findById(id);
+        ProductResponseDto product = productService.findById(id);
 
         log.info("[{}] Product found id={} name={}", SERVICE, product.getId(), product.getName());
 
@@ -50,14 +51,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> create(@Valid @RequestBody Product product) {
+    public ResponseEntity<ProductResponseDto> create(@Valid @RequestBody ProductRequestDto request) {
 
         log.info("[{}] POST /api/products - creating product sku={} name={}",
                 SERVICE,
-                product.getSku(),
-                product.getName());
+                request.getSku(),
+                request.getName());
 
-        Product created = productService.create(product);
+        ProductResponseDto created = productService.create(request);
 
         log.info("[{}] Product created id={} sku={} name={}",
                 SERVICE,
@@ -71,13 +72,13 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(
+    public ResponseEntity<ProductResponseDto> update(
             @PathVariable Long id,
-            @Valid @RequestBody Product product) {
+            @Valid @RequestBody ProductRequestDto request) {
 
         log.info("[{}] PUT /api/products/{} - updating product", SERVICE, id);
 
-        Product updated = productService.update(id, product);
+        ProductResponseDto updated = productService.update(id, request);
 
         log.info("[{}] Product updated id={} name={}",
                 SERVICE,

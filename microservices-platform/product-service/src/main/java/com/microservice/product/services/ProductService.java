@@ -6,8 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.microservice.product.dto.request.ProductRequestDto;
+import com.microservice.product.dto.response.ProductResponseDto;
+import com.microservice.product.entities.Category;
 import com.microservice.product.entities.Product;
 import com.microservice.product.enums.ProductStatus;
+import com.microservice.product.mapper.ProductMapper;
+import com.microservice.product.repository.CategoryRepository;
 import com.microservice.product.repository.ProductRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,31 +24,37 @@ public class ProductService {
     private static final String SERVICE = "product-service";
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository,
+                          CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
-    public List<Product> findAll() {
+    public List<ProductResponseDto> findAll() {
 
         log.info("[{}] Fetching all products (not deleted)", SERVICE);
 
-        List<Product> products = productRepository.findByDeletedFalse();
+        List<ProductResponseDto> products = productRepository.findByDeletedFalse()
+                .stream()
+                .map(ProductMapper::toDto)
+                .toList();
 
         log.info("[{}] Returned {} products", SERVICE, products.size());
 
         return products;
     }
 
-    public Product findById(Long id) {
+    public ProductResponseDto findById(Long id) {
 
         log.info("[{}] Fetching product id={}", SERVICE, id);
 
         Product product = productRepository.findById(id)
-            .orElseThrow(() -> {
-                log.warn("[{}] Product not found id={}", SERVICE, id);
-                return new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-            });
+                .orElseThrow(() -> {
+                    log.warn("[{}] Product not found id={}", SERVICE, id);
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
+                });
 
         if (Boolean.TRUE.equals(product.getDeleted())) {
 
@@ -58,22 +69,30 @@ public class ProductService {
                 product.getSku(),
                 product.getName());
 
-        return product;
+        return ProductMapper.toDto(product);
     }
 
-    public Product create(Product product) {
+    public ProductResponseDto create(ProductRequestDto request) {
 
         log.info("[{}] Creating product sku={} name={}",
                 SERVICE,
-                product.getSku(),
-                product.getName());
+                request.getSku(),
+                request.getName());
 
-        if (productRepository.existsBySkuAndDeletedFalse(product.getSku())) {
+        if (productRepository.existsBySkuAndDeletedFalse(request.getSku())) {
 
-            log.warn("[{}] Product SKU already exists sku={}", SERVICE, product.getSku());
+            log.warn("[{}] Product SKU already exists sku={}", SERVICE, request.getSku());
 
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Product SKU already exists");
         }
+
+        Category category = categoryRepository.findById(request.getCategoryId())
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "Category not found: " + request.getCategoryId()
+                ));
+
+        Product product = ProductMapper.toEntity(request, category);
 
         Product saved = productRepository.save(product);
 
@@ -83,18 +102,18 @@ public class ProductService {
                 saved.getSku(),
                 saved.getName());
 
-        return saved;
+        return ProductMapper.toDto(saved);
     }
 
-    public Product update(Long id, Product product) {
+    public ProductResponseDto update(Long id, ProductRequestDto request) {
 
         log.info("[{}] Updating product id={}", SERVICE, id);
 
         Product existing = productRepository.findById(id)
-            .orElseThrow(() -> {
-                log.warn("[{}] Product not found for update id={}", SERVICE, id);
-                return new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-            });
+                .orElseThrow(() -> {
+                    log.warn("[{}] Product not found for update id={}", SERVICE, id);
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
+                });
 
         if (Boolean.TRUE.equals(existing.getDeleted())) {
 
@@ -103,11 +122,13 @@ public class ProductService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product is deleted");
         }
 
-        existing.setSku(product.getSku());
-        existing.setName(product.getName());
-        existing.setDescription(product.getDescription());
-        existing.setPrice(product.getPrice());
-        existing.setStatus(product.getStatus());
+        Category category = categoryRepository.findById(request.getCategoryId())
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "Category not found: " + request.getCategoryId()
+                ));
+
+        ProductMapper.updateEntity(request, existing, category);
 
         Product updated = productRepository.save(existing);
 
@@ -117,7 +138,7 @@ public class ProductService {
                 updated.getSku(),
                 updated.getName());
 
-        return updated;
+        return ProductMapper.toDto(updated);
     }
 
     public void delete(Long id) {
@@ -125,10 +146,10 @@ public class ProductService {
         log.info("[{}] Deleting product id={}", SERVICE, id);
 
         Product product = productRepository.findById(id)
-            .orElseThrow(() -> {
-                log.warn("[{}] Product not found for delete id={}", SERVICE, id);
-                return new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-            });
+                .orElseThrow(() -> {
+                    log.warn("[{}] Product not found for delete id={}", SERVICE, id);
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
+                });
 
         product.setDeleted(true);
         product.setStatus(ProductStatus.INACTIVE);

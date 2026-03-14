@@ -11,8 +11,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.microservice.order.clients.ProductClient;
 import com.microservice.order.clients.ProductResponse;
+import com.microservice.order.dto.request.OrderRequestDto;
+import com.microservice.order.dto.response.OrderResponseDto;
 import com.microservice.order.entities.Order;
 import com.microservice.order.entities.OrderItem;
+import com.microservice.order.mapper.OrderMapper;
 import com.microservice.order.repositories.OrderRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,17 +37,22 @@ public class OrderService {
         this.productClient = productClient;
     }
 
-    public List<Order> getAll() {
+    public List<OrderResponseDto> getAll() {
         log.info("[{}] Fetching all orders", SERVICE);
-        return orderRepository.findAll();
+        return orderRepository.findAll()
+                .stream()
+                .map(OrderMapper::toDto)
+                .toList();
     }
 
-    public OrderCreationResult create(Order order) {
+    public OrderCreationResult create(OrderRequestDto request) {
 
-        log.info("[{}] Creating order idempotencyKey={}", SERVICE, order.getIdempotencyKey());
+        log.info("[{}] Creating order idempotencyKey={}", SERVICE, request.getIdempotencyKey());
 
-        if (order.getIdempotencyKey() != null && !order.getIdempotencyKey().isBlank()) {
-            Optional<Order> existingOrder = orderRepository.findByIdempotencyKey(order.getIdempotencyKey());
+        Order incomingOrder = OrderMapper.toEntity(request);
+
+        if (incomingOrder.getIdempotencyKey() != null && !incomingOrder.getIdempotencyKey().isBlank()) {
+            Optional<Order> existingOrder = orderRepository.findByIdempotencyKey(incomingOrder.getIdempotencyKey());
 
             if (existingOrder.isPresent()) {
                 log.info("[{}] Idempotent request detected returning existing order orderId={}",
@@ -55,7 +63,7 @@ public class OrderService {
             }
         }
 
-        if (order.getOrderItems() == null || order.getOrderItems().isEmpty()) {
+        if (incomingOrder.getOrderItems() == null || incomingOrder.getOrderItems().isEmpty()) {
             log.warn("[{}] Order creation failed no items provided", SERVICE);
 
             throw new ResponseStatusException(
@@ -69,7 +77,7 @@ public class OrderService {
         BigDecimal taxTotal = ZERO;
         BigDecimal total = ZERO;
 
-        for (OrderItem item : order.getOrderItems()) {
+        for (OrderItem item : incomingOrder.getOrderItems()) {
 
             log.info("[{}] Processing order item productId={} quantity={}",
                     SERVICE,
@@ -160,7 +168,7 @@ public class OrderService {
             item.setTaxRate(taxRate);
             item.setTaxAmount(taxAmount);
             item.setLineTotal(lineTotal);
-            item.setOrder(order);
+            item.setOrder(incomingOrder);
 
             pvpSubtotal = pvpSubtotal.add(grossLineSubtotal);
             discountTotal = discountTotal.add(itemDiscountTotal);
@@ -168,10 +176,10 @@ public class OrderService {
             total = total.add(lineTotal);
         }
 
-        order.setPvpSubtotal(pvpSubtotal.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
-        order.setDiscountTotal(discountTotal.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
-        order.setTaxTotal(taxTotal.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
-        order.setTotal(total.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
+        incomingOrder.setPvpSubtotal(pvpSubtotal.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
+        incomingOrder.setDiscountTotal(discountTotal.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
+        incomingOrder.setTaxTotal(taxTotal.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
+        incomingOrder.setTotal(total.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
 
         log.info("[{}] Order totals subtotal={} discount={} tax={} total={}",
                 SERVICE,
@@ -180,7 +188,7 @@ public class OrderService {
                 taxTotal,
                 total);
 
-        Order savedOrder = orderRepository.save(order);
+        Order savedOrder = orderRepository.save(incomingOrder);
 
         String orderNumber = "ORD-" + String.format("%06d", savedOrder.getId());
         savedOrder.setOrderNumber(orderNumber);
@@ -193,5 +201,9 @@ public class OrderService {
                 finalOrder.getOrderNumber());
 
         return new OrderCreationResult(finalOrder, true);
+    }
+
+    public OrderResponseDto toResponseDto(Order order) {
+        return OrderMapper.toDto(order);
     }
 }

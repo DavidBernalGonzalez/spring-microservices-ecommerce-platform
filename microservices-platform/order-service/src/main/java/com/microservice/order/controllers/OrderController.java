@@ -1,13 +1,17 @@
 package com.microservice.order.controllers;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.microservice.order.entities.Order;
+import com.microservice.order.dto.request.OrderRequestDto;
+import com.microservice.order.dto.response.OrderResponseDto;
 import com.microservice.order.services.OrderCreationResult;
 import com.microservice.order.services.OrderService;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -22,7 +26,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAll() {
+    public ResponseEntity<List<OrderResponseDto>> getAll() {
         log.info("GET /api/orders - fetching all orders");
 
         var orders = orderService.getAll();
@@ -33,13 +37,15 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> create(@RequestBody Order order) {
+    public ResponseEntity<OrderResponseDto> create(@Valid @RequestBody OrderRequestDto request) {
 
         log.info("POST /api/orders - received request with idempotencyKey={} and {} items",
-                order.getIdempotencyKey(),
-                order.getOrderItems() != null ? order.getOrderItems().size() : 0);
+                request.getIdempotencyKey(),
+                request.getOrderItems() != null ? request.getOrderItems().size() : 0);
 
-        OrderCreationResult result = orderService.create(order);
+        OrderCreationResult result = orderService.create(request);
+
+        OrderResponseDto body = orderService.toResponseDto(result.getOrder());
 
         if (result.isCreated()) {
 
@@ -49,7 +55,7 @@ public class OrderController {
 
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(result.getOrder());
+                    .body(body);
         }
 
         log.info("Idempotent request detected. Returning existing order orderId={} orderNumber={}",
@@ -58,6 +64,6 @@ public class OrderController {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(result.getOrder());
+                .body(body);
     }
 }
