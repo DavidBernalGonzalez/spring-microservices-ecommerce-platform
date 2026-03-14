@@ -1,13 +1,16 @@
 package com.microservice.product.controllers;
 
 import java.net.URI;
-import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.microservice.product.dto.request.ProductRequestDto;
 import com.microservice.product.dto.response.ProductResponseDto;
+import com.microservice.product.enums.ProductStatus;
 import com.microservice.product.services.ProductService;
 
 import jakarta.validation.Valid;
@@ -27,15 +30,19 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResponseDto>> getAll() {
+    public ResponseEntity<Page<ProductResponseDto>> getAll(
+            @PageableDefault(size = 20, sort = "id") Pageable pageable,
+            @RequestParam(required = false) ProductStatus status,
+            @RequestParam(required = false) Long categoryId) {
 
-        log.info("[{}] GET /api/products - fetching all products", SERVICE);
+        log.info("[{}] GET /api/products - fetching products page={} size={} status={} categoryId={}",
+                SERVICE, pageable.getPageNumber(), pageable.getPageSize(), status, categoryId);
 
-        List<ProductResponseDto> products = productService.findAll();
+        Page<ProductResponseDto> page = productService.findAll(pageable, status, categoryId);
 
-        log.info("[{}] GET /api/products - returned {} products", SERVICE, products.size());
+        log.info("[{}] GET /api/products - returned page {} of {} ({} items)", SERVICE, page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
 
-        return ResponseEntity.ok(products);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping("/{id}")

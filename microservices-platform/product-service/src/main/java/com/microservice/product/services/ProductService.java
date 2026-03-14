@@ -1,7 +1,7 @@
 package com.microservice.product.services;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -32,18 +32,30 @@ public class ProductService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<ProductResponseDto> findAll() {
+    public Page<ProductResponseDto> findAll(Pageable pageable, ProductStatus status, Long categoryId) {
 
-        log.info("[{}] Fetching all products (not deleted)", SERVICE);
+        log.info("[{}] Fetching products (not deleted) page={} size={} status={} categoryId={}",
+                SERVICE, pageable.getPageNumber(), pageable.getPageSize(), status, categoryId);
 
-        List<ProductResponseDto> products = productRepository.findByDeletedFalse()
-                .stream()
-                .map(ProductMapper::toDto)
-                .toList();
+        Page<ProductResponseDto> page;
 
-        log.info("[{}] Returned {} products", SERVICE, products.size());
+        if (status != null && categoryId != null) {
+            page = productRepository.findByDeletedFalseAndStatusAndCategory_Id(status, categoryId, pageable)
+                    .map(ProductMapper::toDto);
+        } else if (status != null) {
+            page = productRepository.findByDeletedFalseAndStatus(status, pageable)
+                    .map(ProductMapper::toDto);
+        } else if (categoryId != null) {
+            page = productRepository.findByDeletedFalseAndCategory_Id(categoryId, pageable)
+                    .map(ProductMapper::toDto);
+        } else {
+            page = productRepository.findByDeletedFalse(pageable)
+                    .map(ProductMapper::toDto);
+        }
 
-        return products;
+        log.info("[{}] Returned page {} of {} ({} items)", SERVICE, page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
+
+        return page;
     }
 
     public ProductResponseDto findById(Long id) {

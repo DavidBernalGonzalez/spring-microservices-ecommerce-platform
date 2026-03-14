@@ -2,9 +2,10 @@ package com.microservice.order.services;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -37,12 +38,10 @@ public class OrderService {
         this.productClient = productClient;
     }
 
-    public List<OrderResponseDto> getAll() {
-        log.info("[{}] Fetching all orders", SERVICE);
-        return orderRepository.findAllWithItems()          // 👈 usamos el fetch join
-                .stream()
-                .map(OrderMapper::toDto)
-                .toList();
+    public Page<OrderResponseDto> getAll(Pageable pageable) {
+        log.info("[{}] Fetching orders page={} size={}", SERVICE, pageable.getPageNumber(), pageable.getPageSize());
+        return orderRepository.findAllWithItems(pageable)
+                .map(OrderMapper::toDto);
     }
 
     public OrderCreationResult create(OrderRequestDto request) {

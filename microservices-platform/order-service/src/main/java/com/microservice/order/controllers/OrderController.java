@@ -1,7 +1,8 @@
 package com.microservice.order.controllers;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,14 +27,15 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<OrderResponseDto>> getAll() {
-        log.info("GET /api/orders - fetching all orders");
+    public ResponseEntity<Page<OrderResponseDto>> getAll(
+            @PageableDefault(size = 20, sort = "id") Pageable pageable) {
+        log.info("GET /api/orders - fetching orders page={} size={}", pageable.getPageNumber(), pageable.getPageSize());
 
-        var orders = orderService.getAll();
+        Page<OrderResponseDto> page = orderService.getAll(pageable);
 
-        log.info("GET /api/orders - returned {} orders", orders.size());
+        log.info("GET /api/orders - returned page {} of {} ({} items)", page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
 
-        return ResponseEntity.ok(orders);
+        return ResponseEntity.ok(page);
     }
 
     @PostMapping
