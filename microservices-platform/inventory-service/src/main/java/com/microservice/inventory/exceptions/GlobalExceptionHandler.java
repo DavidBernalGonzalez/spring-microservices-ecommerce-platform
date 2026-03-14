@@ -260,13 +260,13 @@ public class GlobalExceptionHandler {
     }
 
     private List<String> getAllowedReferenceTypesByPath(String path) {
-        if (path.matches(".*/api/inventory/\\d+/add$")) {
+        if (path.matches(".*/api/v1/inventory/\\d+/add$")) {
             return List.of("RESTOCK", "MANUAL_ADJUSTMENT");
         }
 
-        if (path.matches(".*/api/inventory/\\d+/reserve$")
-                || path.matches(".*/api/inventory/\\d+/release$")
-                || path.matches(".*/api/inventory/\\d+/confirm-output$")) {
+        if (path.matches(".*/api/v1/inventory/\\d+/reserve$")
+                || path.matches(".*/api/v1/inventory/\\d+/release$")
+                || path.matches(".*/api/v1/inventory/\\d+/confirm-output$")) {
             return List.of("ORDER");
         }
 

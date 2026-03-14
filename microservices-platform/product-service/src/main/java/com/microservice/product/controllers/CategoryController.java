@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
 
     private static final String SERVICE = "product-service";
@@ -30,11 +30,11 @@ public class CategoryController {
     @GetMapping
     public ResponseEntity<List<CategoryResponseDto>> getAll() {
 
-        log.info("[{}] GET /api/categories - fetching all categories", SERVICE);
+        log.info("[{}] GET /api/v1/categories - fetching all categories", SERVICE);
 
         List<CategoryResponseDto> categories = categoryService.findAll();
 
-        log.info("[{}] GET /api/categories - returned {} categories", SERVICE, categories.size());
+        log.info("[{}] GET /api/v1/categories - returned {} categories", SERVICE, categories.size());
 
         return ResponseEntity.ok(categories);
     }
@@ -42,7 +42,7 @@ public class CategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponseDto> getById(@PathVariable Long id) {
 
-        log.info("[{}] GET /api/categories/{} - fetching category", SERVICE, id);
+        log.info("[{}] GET /api/v1/categories/{} - fetching category", SERVICE, id);
 
         CategoryResponseDto category = categoryService.findById(id);
 
@@ -54,7 +54,7 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<CategoryResponseDto> create(@Valid @RequestBody CategoryRequestDto request) {
 
-        log.info("[{}] POST /api/categories - creating category name={}", SERVICE, request.getName());
+        log.info("[{}] POST /api/v1/categories - creating category name={}", SERVICE, request.getName());
 
         CategoryResponseDto created = categoryService.create(request);
 
@@ -66,7 +66,7 @@ public class CategoryController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .location(URI.create("/api/categories/" + created.getId()))
+                .location(URI.create("/api/v1/categories/" + created.getId()))
                 .body(created);
     }
 
@@ -75,7 +75,7 @@ public class CategoryController {
             @PathVariable Long id,
             @Valid @RequestBody CategoryRequestDto request) {
 
-        log.info("[{}] PUT /api/categories/{} - updating category", SERVICE, id);
+        log.info("[{}] PUT /api/v1/categories/{} - updating category", SERVICE, id);
 
         CategoryResponseDto updated = categoryService.update(id, request);
 
@@ -91,7 +91,7 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        log.info("[{}] DELETE /api/categories/{} - deleting category", SERVICE, id);
+        log.info("[{}] DELETE /api/v1/categories/{} - deleting category", SERVICE, id);
 
         categoryService.delete(id);
 

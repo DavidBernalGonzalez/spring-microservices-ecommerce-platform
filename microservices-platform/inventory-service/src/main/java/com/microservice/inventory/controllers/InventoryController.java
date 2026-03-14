@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/inventory")
+@RequestMapping("/api/v1/inventory")
 public class InventoryController {
 
     private static final String SERVICE = "inventory-service";
@@ -30,25 +30,25 @@ public class InventoryController {
 
     @GetMapping
     public ResponseEntity<List<InventoryResponse>> getAll() {
-        log.info("[{}] GET /api/inventory - fetching all inventory records", SERVICE);
+        log.info("[{}] GET /api/v1/inventory - fetching all inventory records", SERVICE);
         return ResponseEntity.ok(inventoryService.findAll());
     }
 
     @GetMapping("/{productId}")
     public ResponseEntity<InventoryResponse> getByProductId(@PathVariable Long productId) {
-        log.info("[{}] GET /api/inventory/{} - fetching inventory", SERVICE, productId);
+        log.info("[{}] GET /api/v1/inventory/{} - fetching inventory", SERVICE, productId);
         return ResponseEntity.ok(inventoryService.findByProductId(productId));
     }
 
     @GetMapping("/{productId}/movements")
     public ResponseEntity<InventoryMovementsResponse> getMovementsByProductId(@PathVariable Long productId) {
-        log.info("[{}] GET /api/inventory/{}/movements - fetching inventory movements", SERVICE, productId);
+        log.info("[{}] GET /api/v1/inventory/{}/movements - fetching inventory movements", SERVICE, productId);
         return ResponseEntity.ok(inventoryService.getMovementsByProductId(productId));
     }
 
     @PostMapping
     public ResponseEntity<InventoryResponse> create(@Valid @RequestBody CreateInventoryRequest request) {
-        log.info("[{}] POST /api/inventory - creating inventory productId={} initialStock={}",
+        log.info("[{}] POST /api/v1/inventory - creating inventory productId={} initialStock={}",
                 SERVICE,
                 request.getProductId(),
                 request.getInitialStock());
@@ -62,7 +62,7 @@ public class InventoryController {
             @PathVariable Long productId,
             @Valid @RequestBody StockAdjustmentRequest request) {
 
-        log.info("[{}] POST /api/inventory/{}/add - adding stock referenceType={} referenceNumber={} quantity={} reason={}",
+        log.info("[{}] POST /api/v1/inventory/{}/add - adding stock referenceType={} referenceNumber={} quantity={} reason={}",
                 SERVICE,
                 productId,
                 request.getReferenceType(),
@@ -84,7 +84,7 @@ public class InventoryController {
             @PathVariable Long productId,
             @Valid @RequestBody StockAdjustmentRequest request) {
 
-        log.info("[{}] POST /api/inventory/{}/reserve - reserving stock referenceType={} referenceNumber={} quantity={} reason={}",
+        log.info("[{}] POST /api/v1/inventory/{}/reserve - reserving stock referenceType={} referenceNumber={} quantity={} reason={}",
                 SERVICE,
                 productId,
                 request.getReferenceType(),
@@ -106,7 +106,7 @@ public class InventoryController {
             @PathVariable Long productId,
             @Valid @RequestBody StockAdjustmentRequest request) {
 
-        log.info("[{}] POST /api/inventory/{}/release - releasing stock referenceType={} referenceNumber={} quantity={} reason={}",
+        log.info("[{}] POST /api/v1/inventory/{}/release - releasing stock referenceType={} referenceNumber={} quantity={} reason={}",
                 SERVICE,
                 productId,
                 request.getReferenceType(),
@@ -128,7 +128,7 @@ public class InventoryController {
             @PathVariable Long productId,
             @Valid @RequestBody StockAdjustmentRequest request) {
 
-        log.info("[{}] POST /api/inventory/{}/confirm-output - confirming stock output referenceType={} referenceNumber={} quantity={} reason={}",
+        log.info("[{}] POST /api/v1/inventory/{}/confirm-output - confirming stock output referenceType={} referenceNumber={} quantity={} reason={}",
                 SERVICE,
                 productId,
                 request.getReferenceType(),

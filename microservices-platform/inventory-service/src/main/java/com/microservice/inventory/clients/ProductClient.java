@@ -22,7 +22,7 @@ public class ProductClient {
     public void validateProductExists(Long productId) {
         try {
             restClient.get()
-                    .uri("/api/products/{id}", productId)
+                    .uri("/api/v1/products/{id}", productId)
                     .retrieve()
                     .onStatus(HttpStatusCode::is4xxClientError, (request, response) -> {
                         throw new ResponseStatusException(

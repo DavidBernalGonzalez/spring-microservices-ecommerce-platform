@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
 
     private static final String SERVICE = "product-service";
@@ -35,12 +35,12 @@ public class ProductController {
             @RequestParam(required = false) ProductStatus status,
             @RequestParam(required = false) Long categoryId) {
 
-        log.info("[{}] GET /api/products - fetching products page={} size={} status={} categoryId={}",
+        log.info("[{}] GET /api/v1/products - fetching products page={} size={} status={} categoryId={}",
                 SERVICE, pageable.getPageNumber(), pageable.getPageSize(), status, categoryId);
 
         Page<ProductResponseDto> page = productService.findAll(pageable, status, categoryId);
 
-        log.info("[{}] GET /api/products - returned page {} of {} ({} items)", SERVICE, page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
+        log.info("[{}] GET /api/v1/products - returned page {} of {} ({} items)", SERVICE, page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
 
         return ResponseEntity.ok(page);
     }
@@ -60,7 +60,7 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ProductResponseDto> create(@Valid @RequestBody ProductRequestDto request) {
 
-        log.info("[{}] POST /api/products - creating product sku={} name={}",
+        log.info("[{}] POST /api/v1/products - creating product sku={} name={}",
                 SERVICE,
                 request.getSku(),
                 request.getName());
@@ -74,7 +74,7 @@ public class ProductController {
                 created.getName());
 
         return ResponseEntity
-                .created(URI.create("/api/products/" + created.getId()))
+                .created(URI.create("/api/v1/products/" + created.getId()))
                 .body(created);
     }
 
@@ -83,7 +83,7 @@ public class ProductController {
             @PathVariable Long id,
             @Valid @RequestBody ProductRequestDto request) {
 
-        log.info("[{}] PUT /api/products/{} - updating product", SERVICE, id);
+        log.info("[{}] PUT /api/v1/products/{} - updating product", SERVICE, id);
 
         ProductResponseDto updated = productService.update(id, request);
 
@@ -98,7 +98,7 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        log.info("[{}] DELETE /api/products/{} - deleting product", SERVICE, id);
+        log.info("[{}] DELETE /api/v1/products/{} - deleting product", SERVICE, id);
 
         productService.delete(id);
 

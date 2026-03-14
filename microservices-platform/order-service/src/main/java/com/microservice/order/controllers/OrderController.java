@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/v1/orders")
 public class OrderController {
 
     private final OrderService orderService;
@@ -29,22 +29,22 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<Page<OrderResponseDto>> getAll(
             @PageableDefault(size = 20, sort = "id") Pageable pageable) {
-        log.info("GET /api/orders - fetching orders page={} size={}", pageable.getPageNumber(), pageable.getPageSize());
+        log.info("GET /api/v1/orders - fetching orders page={} size={}", pageable.getPageNumber(), pageable.getPageSize());
 
         Page<OrderResponseDto> page = orderService.getAll(pageable);
 
-        log.info("GET /api/orders - returned page {} of {} ({} items)", page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
+        log.info("GET /api/v1/orders - returned page {} of {} ({} items)", page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
 
         return ResponseEntity.ok(page);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponseDto> getById(@PathVariable Long id) {
-        log.info("GET /api/orders/{} - fetching order", id);
+        log.info("GET /api/v1/orders/{} - fetching order", id);
 
         OrderResponseDto order = orderService.getById(id);
 
-        log.info("GET /api/orders/{} - order found orderNumber={}", id, order.getOrderNumber());
+        log.info("GET /api/v1/orders/{} - order found orderNumber={}", id, order.getOrderNumber());
 
         return ResponseEntity.ok(order);
     }
@@ -52,7 +52,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<OrderResponseDto> create(@Valid @RequestBody OrderRequestDto request) {
 
-        log.info("POST /api/orders - received request with idempotencyKey={} and {} items",
+        log.info("POST /api/v1/orders - received request with idempotencyKey={} and {} items",
                 request.getIdempotencyKey(),
                 request.getOrderItems() != null ? request.getOrderItems().size() : 0);
 
