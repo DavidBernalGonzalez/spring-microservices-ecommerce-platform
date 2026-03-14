@@ -44,6 +44,20 @@ public class OrderService {
                 .map(OrderMapper::toDto);
     }
 
+    public OrderResponseDto getById(Long id) {
+        log.info("[{}] Fetching order id={}", SERVICE, id);
+
+        Order order = orderRepository.findWithItemsById(id)
+                .orElseThrow(() -> {
+                    log.warn("[{}] Order not found id={}", SERVICE, id);
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found with id: " + id);
+                });
+
+        log.info("[{}] Order found id={} orderNumber={}", SERVICE, order.getId(), order.getOrderNumber());
+
+        return OrderMapper.toDto(order);
+    }
+
     public OrderCreationResult create(OrderRequestDto request) {
 
         log.info("[{}] Creating order idempotencyKey={}", SERVICE, request.getIdempotencyKey());

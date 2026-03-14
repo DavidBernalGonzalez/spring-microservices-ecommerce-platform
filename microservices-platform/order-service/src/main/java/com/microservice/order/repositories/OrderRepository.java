@@ -30,4 +30,11 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
         countQuery = "select count(distinct o) from Order o"
     )
     Page<Order> findAllWithItems(Pageable pageable);
+
+    @Query("""
+        select o from Order o
+        left join fetch o.orderItems
+        where o.id = :id
+    """)
+    Optional<Order> findWithItemsById(Long id);
 }

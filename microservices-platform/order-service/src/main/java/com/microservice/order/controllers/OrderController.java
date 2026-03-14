@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("api/orders")
+@RequestMapping("/api/orders")
 public class OrderController {
 
     private final OrderService orderService;
@@ -36,6 +36,17 @@ public class OrderController {
         log.info("GET /api/orders - returned page {} of {} ({} items)", page.getNumber(), page.getTotalPages(), page.getNumberOfElements());
 
         return ResponseEntity.ok(page);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderResponseDto> getById(@PathVariable Long id) {
+        log.info("GET /api/orders/{} - fetching order", id);
+
+        OrderResponseDto order = orderService.getById(id);
+
+        log.info("GET /api/orders/{} - order found orderNumber={}", id, order.getOrderNumber());
+
+        return ResponseEntity.ok(order);
     }
 
     @PostMapping
