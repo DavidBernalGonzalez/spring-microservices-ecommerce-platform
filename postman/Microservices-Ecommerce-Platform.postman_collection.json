@@ -28,6 +28,18 @@
 			"name": "Product Service",
 			"item": [
 				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/actuator/health",
+							"host": ["{{product_base_url}}"],
+							"path": ["actuator", "health"]
+						}
+					}
+				},
+				{
 					"name": "Get All Products (paginated)",
 					"request": {
 						"method": "GET",
@@ -189,6 +201,18 @@
 			"name": "Order Service",
 			"item": [
 				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/actuator/health",
+							"host": ["{{order_base_url}}"],
+							"path": ["actuator", "health"]
+						}
+					}
+				},
+				{
 					"name": "Get All Orders (paginated)",
 					"request": {
 						"method": "GET",
@@ -240,6 +264,18 @@
 		{
 			"name": "Inventory Service",
 			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/actuator/health",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["actuator", "health"]
+						}
+					}
+				},
 				{
 					"name": "Get All Inventory (paginated)",
 					"request": {
@@ -332,6 +368,42 @@
 							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/reserve",
 							"host": ["{{inventory_base_url}}"],
 							"path": ["api", "{{api_version}}", "inventory", "1", "reserve"]
+						}
+					}
+				},
+				{
+					"name": "Release Stock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"referenceType\": \"ORDER\",\n  \"referenceNumber\": \"ORD-000001\",\n  \"quantity\": 2,\n  \"reason\": \"Order cancelled\"\n}"
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/release",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1", "release"]
+						}
+					}
+				},
+				{
+					"name": "Confirm Output",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"referenceType\": \"ORDER\",\n  \"referenceNumber\": \"ORD-000001\",\n  \"quantity\": 2,\n  \"reason\": \"Order shipped\"\n}"
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/confirm-output",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1", "confirm-output"]
 						}
 					}
 				}
