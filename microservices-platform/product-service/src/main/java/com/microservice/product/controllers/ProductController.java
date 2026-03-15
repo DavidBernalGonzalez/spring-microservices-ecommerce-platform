@@ -48,7 +48,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponseDto> getById(@PathVariable Long id) {
 
-        log.info("[{}] GET /api/products/{} - fetching product", SERVICE, id);
+        log.info("[{}] GET /api/v1/products/{} - fetching product", SERVICE, id);
 
         ProductResponseDto product = productService.findById(id);
 
