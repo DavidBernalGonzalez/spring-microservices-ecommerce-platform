@@ -241,14 +241,19 @@
 			"name": "Inventory Service",
 			"item": [
 				{
-					"name": "Get All Inventory",
+					"name": "Get All Inventory (paginated)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory",
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory?page=0&size=20",
 							"host": ["{{inventory_base_url}}"],
-							"path": ["api", "{{api_version}}", "inventory"]
+							"path": ["api", "{{api_version}}", "inventory"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "20"},
+								{"key": "sort", "value": "id", "disabled": true}
+							]
 						}
 					}
 				},

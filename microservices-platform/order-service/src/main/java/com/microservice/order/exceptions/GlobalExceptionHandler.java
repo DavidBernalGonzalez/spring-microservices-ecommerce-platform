@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
+import feign.FeignException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
@@ -94,6 +96,67 @@ public class GlobalExceptionHandler {
                 .build();
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<ApiError> handleResponseStatusException(
+            ResponseStatusException ex,
+            HttpServletRequest request) {
+
+        log.warn("[{}] ResponseStatusException at path={} status={} message={}",
+                SERVICE,
+                request.getRequestURI(),
+                ex.getStatusCode(),
+                ex.getReason());
+
+        ApiError apiError = ApiError.builder()
+                .timestamp(LocalDateTime.now())
+                .status(ex.getStatusCode().value())
+                .error(ex.getStatusCode().toString())
+                .path(request.getRequestURI())
+                .errors(List.of(new ApiFieldError("request", ex.getReason())))
+                .build();
+
+        return ResponseEntity.status(ex.getStatusCode()).body(apiError);
+    }
+
+    @ExceptionHandler(FeignException.class)
+    public ResponseEntity<ApiError> handleFeignException(
+            FeignException ex,
+            HttpServletRequest request) {
+
+        int status = ex.status();
+        String message = resolveFeignErrorMessage(ex, status);
+
+        log.warn("[{}] Feign client error at path={} status={} message={}",
+                SERVICE,
+                request.getRequestURI(),
+                status,
+                message);
+
+        HttpStatus httpStatus = status >= 500
+                ? HttpStatus.BAD_GATEWAY
+                : HttpStatus.valueOf(status);
+
+        ApiError apiError = ApiError.builder()
+                .timestamp(LocalDateTime.now())
+                .status(httpStatus.value())
+                .error(httpStatus.getReasonPhrase())
+                .path(request.getRequestURI())
+                .errors(List.of(new ApiFieldError("product-service", message)))
+                .build();
+
+        return ResponseEntity.status(httpStatus).body(apiError);
+    }
+
+    private String resolveFeignErrorMessage(FeignException ex, int status) {
+        if (status == 404) {
+            return "Product not found";
+        }
+        if (status >= 400 && status < 500) {
+            return "Product service returned client error (status " + status + ")";
+        }
+        return "Product service unavailable";
     }
 
     @ExceptionHandler(Exception.class)

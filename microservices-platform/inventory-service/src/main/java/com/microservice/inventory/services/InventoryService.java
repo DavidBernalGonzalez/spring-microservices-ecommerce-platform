@@ -2,6 +2,8 @@ package com.microservice.inventory.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,13 +42,11 @@ public class InventoryService {
     }
 
     @Transactional(readOnly = true)
-    public List<InventoryResponse> findAll() {
-        log.info("[{}] Fetching all inventories", SERVICE);
+    public Page<InventoryResponse> findAll(Pageable pageable) {
+        log.info("[{}] Fetching inventories page={} size={}", SERVICE, pageable.getPageNumber(), pageable.getPageSize());
 
-        return inventoryRepository.findAll()
-                .stream()
-                .map(this::toResponse)
-                .toList();
+        return inventoryRepository.findAll(pageable)
+                .map(this::toResponse);
     }
 
     @Transactional(readOnly = true)

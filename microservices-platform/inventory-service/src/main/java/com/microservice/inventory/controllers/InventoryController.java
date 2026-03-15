@@ -1,7 +1,8 @@
 package com.microservice.inventory.controllers;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +30,10 @@ public class InventoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<InventoryResponse>> getAll() {
-        log.info("[{}] GET /api/v1/inventory - fetching all inventory records", SERVICE);
-        return ResponseEntity.ok(inventoryService.findAll());
+    public ResponseEntity<Page<InventoryResponse>> getAll(
+            @PageableDefault(size = 20, sort = "id") Pageable pageable) {
+        log.info("[{}] GET /api/v1/inventory - fetching inventory page={} size={}", SERVICE, pageable.getPageNumber(), pageable.getPageSize());
+        return ResponseEntity.ok(inventoryService.findAll(pageable));
     }
 
     @GetMapping("/{productId}")
