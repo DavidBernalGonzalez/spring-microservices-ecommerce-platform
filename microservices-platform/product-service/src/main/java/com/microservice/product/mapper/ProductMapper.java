@@ -1,5 +1,7 @@
 package com.microservice.product.mapper;
 
+import java.math.BigDecimal;
+
 import com.microservice.product.dto.request.ProductRequestDto;
 import com.microservice.product.dto.response.ProductResponseDto;
 import com.microservice.product.entities.Category;
@@ -51,6 +53,10 @@ public class ProductMapper {
             return null;
         }
 
+        BigDecimal taxRate = product.getCategory() != null && product.getCategory().getTaxRate() != null
+                ? product.getCategory().getTaxRate()
+                : BigDecimal.ZERO;
+
         return ProductResponseDto.builder()
                 .id(product.getId())
                 .sku(product.getSku())
@@ -59,6 +65,7 @@ public class ProductMapper {
                 .price(product.getPrice())
                 .categoryId(product.getCategory() != null ? product.getCategory().getId() : null)
                 .categoryName(product.getCategory() != null ? product.getCategory().getName() : null)
+                .taxRate(taxRate)
                 .status(product.getStatus())
                 .build();
     }

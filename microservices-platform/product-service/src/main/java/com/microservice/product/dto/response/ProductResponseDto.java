@@ -25,6 +25,7 @@ public class ProductResponseDto {
 
     private Long categoryId;
     private String categoryName;
+    private BigDecimal taxRate;
 
     private ProductStatus status;
 }

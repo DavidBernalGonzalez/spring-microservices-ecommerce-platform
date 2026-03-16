@@ -20,7 +20,7 @@ public class StockAdjustmentRequest {
     @NotBlank(message = "referenceNumber is required")
     private String referenceNumber;
 
-    @NotNull(message = "Quantity is required")
+    @NotNull(message = "quantity is required")
     @Min(value = 1, message = "quantity must be greater than 0")
     private Integer quantity;
 
