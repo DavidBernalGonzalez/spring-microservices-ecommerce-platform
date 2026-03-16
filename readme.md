@@ -32,16 +32,16 @@ Plataforma de e-commerce basada en **microservicios** con Spring Boot, Spring Cl
          ▼                            ▼                            ▼
 ┌─────────────────┐      ┌─────────────────────┐      ┌─────────────────────┐
 │ product-service │      │   order-service     │      │  inventory-service  │
-│     (8081)      │◄─────│      (8082)        │─────►│       (8083)        │
+│     (8081)      │◄─────│      (8082)         │─────►│       (8083)        │
 │                 │      │                     │      │                     │
-│ • Products      │      │ • Orders            │      │ • Stock              │
+│ • Products      │      │ • Orders            │      │ • Stock             │
 │ • Categories    │      │ • OrderItems        │      │ • Reserve/Release   │
 └────────┬────────┘      └──────────┬──────────┘      └──────────┬──────────┘
          │                          │                           │
          ▼                          ▼                           ▼
 ┌─────────────────┐      ┌─────────────────────┐      ┌─────────────────────┐
-│   ms_products    │      │     ms_orders        │      │   ms_inventory      │
-│   MySQL :3307    │      │   MySQL :3308        │      │   MySQL :3309        │
+│   ms_products   │      │     ms_orders       │      │   ms_inventory      │
+│   MySQL :3307   │      │   MySQL :3308       │      │   MySQL :3309       │
 └─────────────────┘      └─────────────────────┘      └─────────────────────┘
 ```
 
