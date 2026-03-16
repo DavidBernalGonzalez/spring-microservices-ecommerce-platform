@@ -152,6 +152,27 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
     }
 
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ApiError> handleIllegalStateException(
+            IllegalStateException ex,
+            HttpServletRequest request) {
+
+        log.error("[{}] Data integrity error at path={} message={}",
+                SERVICE,
+                request.getRequestURI(),
+                ex.getMessage());
+
+        ApiError apiError = ApiError.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .error("Internal Server Error")
+                .path(request.getRequestURI())
+                .errors(List.of(new ApiFieldError("product", ex.getMessage())))
+                .build();
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiError);
+    }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ApiError> handleDataIntegrityViolationException(
             DataIntegrityViolationException ex,

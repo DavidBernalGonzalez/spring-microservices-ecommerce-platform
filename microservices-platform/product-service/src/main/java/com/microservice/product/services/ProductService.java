@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.microservice.product.dto.request.ProductRequestDto;
@@ -58,6 +59,7 @@ public class ProductService {
         return page;
     }
 
+    @Transactional(readOnly = true)
     public ProductResponseDto findById(Long id) {
 
         log.info("[{}] Fetching product id={}", SERVICE, id);

@@ -53,9 +53,14 @@ public class ProductMapper {
             return null;
         }
 
-        BigDecimal taxRate = product.getCategory() != null && product.getCategory().getTaxRate() != null
-                ? product.getCategory().getTaxRate()
-                : BigDecimal.ZERO;
+        if (product.getCategory() == null) {
+            throw new IllegalStateException("Product id=" + product.getId() + " has no category - cannot determine tax rate");
+        }
+        if (product.getCategory().getTaxRate() == null) {
+            throw new IllegalStateException("Category id=" + product.getCategory().getId() + " has no tax rate");
+        }
+
+        BigDecimal taxRate = product.getCategory().getTaxRate();
 
         return ProductResponseDto.builder()
                 .id(product.getId())
@@ -63,8 +68,8 @@ public class ProductMapper {
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-                .categoryId(product.getCategory() != null ? product.getCategory().getId() : null)
-                .categoryName(product.getCategory() != null ? product.getCategory().getName() : null)
+                .categoryId(product.getCategory().getId())
+                .categoryName(product.getCategory().getName())
                 .taxRate(taxRate)
                 .status(product.getStatus())
                 .build();
