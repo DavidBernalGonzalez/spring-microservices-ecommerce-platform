@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.microservice.order.entities.OrderStatus;
 
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderResponseDto {
 
     private Long id;
@@ -32,4 +34,7 @@ public class OrderResponseDto {
     private OrderStatus status;
 
     private List<OrderItemResponseDto> orderItems;
+
+    /** Present and true when this order was returned due to idempotent replay (same idempotencyKey). */
+    private Boolean idempotentReplay;
 }

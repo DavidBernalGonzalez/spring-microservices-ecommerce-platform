@@ -1,0 +1,99 @@
+# Contract: Inventory API (consumed by Order Service)
+# Source of truth for reserve and release endpoints
+openapi: 3.0.3
+info:
+  title: Inventory API
+  description: Inventory service API - contract for Order service consumer
+  version: 1.0.0
+
+paths:
+  /api/v1/inventory/{productId}/reserve:
+    post:
+      summary: Reserve stock for an order
+      operationId: reserveStock
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockAdjustmentRequest'
+      responses:
+        '200':
+          description: Stock reserved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryResponse'
+        '400':
+          description: Insufficient stock or invalid request
+        '404':
+          description: Inventory not found for product
+
+  /api/v1/inventory/{productId}/release:
+    post:
+      summary: Release reserved stock
+      operationId: releaseStock
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockAdjustmentRequest'
+      responses:
+        '200':
+          description: Stock released successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryResponse'
+        '400':
+          description: Insufficient reserved stock
+        '404':
+          description: Inventory not found for product
+
+components:
+  schemas:
+    StockAdjustmentRequest:
+      type: object
+      required:
+        - referenceType
+        - referenceNumber
+        - quantity
+        - reason
+      properties:
+        referenceType:
+          type: string
+          enum: [ORDER, RESTOCK, MANUAL_ADJUSTMENT, INITIAL_STOCK]
+        referenceNumber:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        reason:
+          type: string
+
+    InventoryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        productId:
+          type: integer
+        availableStock:
+          type: integer
+        reservedStock:
+          type: integer

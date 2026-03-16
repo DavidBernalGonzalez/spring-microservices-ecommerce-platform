@@ -98,6 +98,33 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
     }
 
+    @ExceptionHandler(InsufficientStockException.class)
+    public ResponseEntity<ApiError> handleInsufficientStock(
+            InsufficientStockException ex,
+            HttpServletRequest request) {
+
+        log.warn("[{}] Insufficient stock at path={} productId={} requested={}",
+                SERVICE,
+                request.getRequestURI(),
+                ex.getProductId(),
+                ex.getRequestedQuantity());
+
+        ApiFieldError fieldError = ApiFieldError.builder()
+                .field("productId")
+                .message("Product " + ex.getProductId() + ": " + ex.getDetail())
+                .build();
+
+        ApiError apiError = ApiError.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .error("Bad Request")
+                .path(request.getRequestURI())
+                .errors(List.of(fieldError))
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+    }
+
     @ExceptionHandler(ProductNotAvailableForOrderException.class)
     public ResponseEntity<ApiError> handleProductNotAvailable(
             ProductNotAvailableForOrderException ex,

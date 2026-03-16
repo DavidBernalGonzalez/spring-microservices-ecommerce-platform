@@ -75,8 +75,11 @@ public class OrderController {
                 result.getOrder().getId(),
                 result.getOrder().getOrderNumber());
 
+        body.setIdempotentReplay(true);
+
         return ResponseEntity
                 .status(HttpStatus.OK)
+                .header("X-Idempotent-Replay", "true")
                 .body(body);
     }
 }

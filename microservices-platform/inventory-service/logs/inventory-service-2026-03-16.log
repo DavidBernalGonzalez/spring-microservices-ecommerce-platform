@@ -1,0 +1,1224 @@
+2026-03-16 13:17:03 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 20428 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 13:17:03 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 13:17:03 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 13:17:03 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 13:17:03 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 13:17:04 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 13:17:04 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 2 JPA repository interfaces.
+2026-03-16 13:17:04 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 13:17:04 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:17:04 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 13:17:04 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 13:17:04 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1530 ms
+2026-03-16 13:17:04 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 13:17:04 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 13:17:05 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 13:17:05 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 13:17:05 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ed8b4ef
+2026-03-16 13:17:05 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-16 13:17:05 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 13:17:05 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 13:17:06 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 13:17:06 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:17:06 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-16 13:17:07 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 13:17:07 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:17:07 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 13:17:07 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 4.782 seconds (process running for 5.341)
+2026-03-16 13:17:07 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 13:17:07 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 13:22:34 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2026-03-16 13:22:34 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 13:22:34 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:34 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 13:22:34 [Thread-1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:34 [Thread-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:22:34 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-16 13:22:34 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-16 13:22:34 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 20428 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 13:22:34 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 13:22:35 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 13:22:35 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
+2026-03-16 13:22:35 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 13:22:35 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:35 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 13:22:35 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 13:22:35 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 526 ms
+2026-03-16 13:22:35 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 13:22:35 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 13:22:35 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-03-16 13:22:35 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b653d21
+2026-03-16 13:22:35 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-03-16 13:22:35 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 13:22:35 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 13:22:35 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 13:22:35 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:22:36 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 13:22:36 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:36 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 13:22:36 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.163 seconds (process running for 334.054)
+2026-03-16 13:22:36 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 13:22:36 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 13:22:36 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 13:22:39 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2026-03-16 13:22:39 [Thread-5] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 13:22:39 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:39 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 13:22:39 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:39 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:22:39 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-03-16 13:22:39 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-03-16 13:22:39 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 20428 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 13:22:39 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 13:22:40 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:40 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 13:22:40 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 492 ms
+2026-03-16 13:22:40 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 13:22:40 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-03-16 13:22:40 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@989ce97
+2026-03-16 13:22:40 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-03-16 13:22:40 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 13:22:40 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 13:22:40 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 13:22:40 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 13:22:40 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.208 seconds (process running for 338.866)
+2026-03-16 13:22:40 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 13:22:40 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 13:22:40 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 13:23:07 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 24664 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 13:23:07 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 13:23:07 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 13:23:07 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 13:23:07 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 13:23:08 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 13:23:08 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52 ms. Found 2 JPA repository interfaces.
+2026-03-16 13:23:08 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 13:23:08 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:23:08 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 13:23:08 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 13:23:08 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1563 ms
+2026-03-16 13:23:09 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 13:23:09 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 13:23:09 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 13:23:09 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 13:23:09 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a8b00ae
+2026-03-16 13:23:09 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-16 13:23:09 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 13:23:09 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 13:23:10 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 13:23:10 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:23:11 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-16 13:23:11 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 13:23:11 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:23:11 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 13:23:11 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 5.131 seconds (process running for 5.981)
+2026-03-16 13:23:11 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 13:23:11 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 13:24:34 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 31 class path changes (0 additions, 0 deletions, 31 modifications)
+2026-03-16 13:24:34 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 13:24:34 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:24:34 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 13:24:34 [Thread-1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:24:35 [Thread-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:24:35 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-16 13:24:35 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-16 13:24:35 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 24664 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 13:24:35 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 13:24:35 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 13:24:35 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 2 JPA repository interfaces.
+2026-03-16 13:24:35 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 13:24:35 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:24:35 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 13:24:35 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 13:24:36 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 742 ms
+2026-03-16 13:24:36 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 13:24:36 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 13:24:36 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-03-16 13:24:36 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62e1ca3
+2026-03-16 13:24:36 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-03-16 13:24:36 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 13:24:36 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 13:24:36 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 13:24:36 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:24:36 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 13:24:36 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:24:36 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 13:24:36 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.603 seconds (process running for 90.939)
+2026-03-16 13:24:36 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 13:24:36 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 13:24:36 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 13:25:26 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 31 class path changes (0 additions, 0 deletions, 31 modifications)
+2026-03-16 13:25:26 [Thread-5] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 13:25:26 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:25:26 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 13:25:26 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:25:26 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:25:26 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-03-16 13:25:26 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-03-16 13:25:26 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 24664 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 13:25:26 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 13:25:26 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 13:25:26 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 2 JPA repository interfaces.
+2026-03-16 13:25:27 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 13:25:27 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:25:27 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 13:25:27 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 13:25:27 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 534 ms
+2026-03-16 13:25:27 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 13:25:27 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 13:25:27 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-03-16 13:25:27 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e1b277b
+2026-03-16 13:25:27 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-03-16 13:25:27 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 13:25:27 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 13:25:27 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 13:25:27 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:25:27 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 13:25:27 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:25:27 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 13:25:27 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.134 seconds (process running for 141.721)
+2026-03-16 13:25:27 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 13:25:27 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 13:25:27 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 13:49:57 [HikariPool-3:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=19m29s373ms907µs200ns).
+2026-03-16 13:56:20 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 3112 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 13:56:20 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 13:56:20 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 13:56:20 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 13:56:21 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 13:56:21 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 13:56:21 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 2 JPA repository interfaces.
+2026-03-16 13:56:22 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 13:56:22 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:56:22 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 13:56:22 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 13:56:22 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1531 ms
+2026-03-16 13:56:22 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 13:56:22 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 13:56:23 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 13:56:23 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 13:56:23 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23533a71
+2026-03-16 13:56:23 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-16 13:56:23 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 13:56:23 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 13:56:24 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 13:56:24 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 13:56:24 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-16 13:56:25 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 13:56:25 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 13:56:25 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 13:56:25 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 4.848 seconds (process running for 5.556)
+2026-03-16 13:56:25 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 13:56:25 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 14:36:27 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 33 class path changes (0 additions, 33 deletions, 0 modifications)
+2026-03-16 14:36:27 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 14:36:27 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 14:36:27 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 14:36:27 [Thread-1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 14:36:27 [Thread-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 14:36:27 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-16 14:36:27 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-16 14:36:30 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 3112 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 14:36:30 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 14:36:30 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 14:36:30 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 2 JPA repository interfaces.
+2026-03-16 14:36:30 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 14:36:30 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 14:36:30 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 14:36:30 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 621 ms
+2026-03-16 14:36:30 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 14:36:31 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 14:36:31 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-03-16 14:36:31 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6bbc315b
+2026-03-16 14:36:31 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-03-16 14:36:31 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 14:36:31 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 14:36:31 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 14:36:31 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 14:36:31 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 14:36:31 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 14:36:31 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.497 seconds (process running for 2411.971)
+2026-03-16 14:36:31 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 14:36:31 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 14:36:31 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 14:58:13 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 9628 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 14:58:13 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 14:58:13 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 14:58:13 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 14:58:13 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 14:58:14 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 14:58:14 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80 ms. Found 2 JPA repository interfaces.
+2026-03-16 14:58:15 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 14:58:15 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 14:58:15 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 14:58:15 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 14:58:15 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2065 ms
+2026-03-16 14:58:15 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 14:58:16 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 14:58:16 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 14:58:16 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 14:58:17 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@297f897e
+2026-03-16 14:58:17 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-16 14:58:17 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 14:58:17 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 14:58:18 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 14:58:18 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 14:58:18 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-16 14:58:19 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 14:58:20 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 14:58:20 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 14:58:20 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 7.186 seconds (process running for 8.118)
+2026-03-16 14:58:20 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 14:58:20 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 15:31:29 [http-nio-8083-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-16 15:31:29 [http-nio-8083-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-16 15:31:29 [http-nio-8083-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2026-03-16 15:31:29 [http-nio-8083-exec-1] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory/7/reserve - reserving stock referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 reason=Order creation
+2026-03-16 15:31:29 [http-nio-8083-exec-1] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/7/reserve status=404 NOT_FOUND message=Inventory not found for productId: 7
+2026-03-16 15:31:29 [http-nio-8083-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 7"]
+2026-03-16 15:32:15 [http-nio-8083-exec-2] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory/7/reserve - reserving stock referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 reason=Order creation
+2026-03-16 15:32:15 [http-nio-8083-exec-2] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/7/reserve status=404 NOT_FOUND message=Inventory not found for productId: 7
+2026-03-16 15:32:15 [http-nio-8083-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 7"]
+2026-03-16 15:35:22 [http-nio-8083-exec-5] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:35:22 [http-nio-8083-exec-5] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:35:22 [http-nio-8083-exec-5] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:35:22 [http-nio-8083-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:35:35 [http-nio-8083-exec-6] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 15:35:35 [http-nio-8083-exec-6] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 15:35:35 [http-nio-8083-exec-6] WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-03-16 15:55:38 [http-nio-8083-exec-9] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 15:55:38 [http-nio-8083-exec-9] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 15:55:40 [http-nio-8083-exec-10] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 15:55:40 [http-nio-8083-exec-10] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 15:55:41 [http-nio-8083-exec-1] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 15:55:41 [http-nio-8083-exec-1] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 15:55:41 [http-nio-8083-exec-2] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 15:55:41 [http-nio-8083-exec-2] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 15:55:42 [http-nio-8083-exec-3] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 15:55:42 [http-nio-8083-exec-3] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 15:55:49 [http-nio-8083-exec-4] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:55:49 [http-nio-8083-exec-4] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:55:49 [http-nio-8083-exec-4] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:55:49 [http-nio-8083-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:55:51 [http-nio-8083-exec-5] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:55:51 [http-nio-8083-exec-5] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:55:51 [http-nio-8083-exec-5] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:55:51 [http-nio-8083-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:56:17 [http-nio-8083-exec-6] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:56:17 [http-nio-8083-exec-6] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:56:17 [http-nio-8083-exec-6] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:56:17 [http-nio-8083-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:56:18 [http-nio-8083-exec-7] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:56:18 [http-nio-8083-exec-7] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:56:18 [http-nio-8083-exec-7] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:56:18 [http-nio-8083-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:56:20 [http-nio-8083-exec-8] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:56:20 [http-nio-8083-exec-8] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:56:20 [http-nio-8083-exec-8] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:56:20 [http-nio-8083-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:56:24 [http-nio-8083-exec-9] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1/movements - fetching inventory movements
+2026-03-16 15:56:24 [http-nio-8083-exec-9] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching movements for productId=1
+2026-03-16 15:56:24 [http-nio-8083-exec-9] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1/movements status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:56:24 [http-nio-8083-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:56:37 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 15:56:37 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 15:56:37 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 15:56:37 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-16 15:56:37 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-16 15:56:59 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 31976 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 15:56:59 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 15:56:59 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 15:56:59 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 15:56:59 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 15:56:59 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 15:56:59 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 2 JPA repository interfaces.
+2026-03-16 15:57:00 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 15:57:00 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 15:57:00 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 15:57:00 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 15:57:00 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1179 ms
+2026-03-16 15:57:00 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 15:57:00 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 15:57:00 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 15:57:00 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 15:57:01 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@108dfd09
+2026-03-16 15:57:01 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-16 15:57:01 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 15:57:01 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 15:57:01 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 15:57:02 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 15:57:02 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-16 15:57:02 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 15:57:02 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 15:57:02 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 15:57:02 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 4.058 seconds (process running for 4.553)
+2026-03-16 15:57:02 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 15:57:02 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 15:57:12 [http-nio-8083-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-16 15:57:12 [http-nio-8083-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-16 15:57:12 [http-nio-8083-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-03-16 15:57:12 [http-nio-8083-exec-1] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:12 [http-nio-8083-exec-1] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:12 [http-nio-8083-exec-1] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:12 [http-nio-8083-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:13 [http-nio-8083-exec-2] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:13 [http-nio-8083-exec-2] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:13 [http-nio-8083-exec-2] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:13 [http-nio-8083-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:14 [http-nio-8083-exec-4] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:14 [http-nio-8083-exec-4] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:14 [http-nio-8083-exec-4] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:14 [http-nio-8083-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:15 [http-nio-8083-exec-5] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:15 [http-nio-8083-exec-5] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:15 [http-nio-8083-exec-5] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:15 [http-nio-8083-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:16 [http-nio-8083-exec-6] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:16 [http-nio-8083-exec-6] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:16 [http-nio-8083-exec-6] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:16 [http-nio-8083-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:16 [http-nio-8083-exec-7] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:16 [http-nio-8083-exec-7] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:16 [http-nio-8083-exec-7] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:16 [http-nio-8083-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:17 [http-nio-8083-exec-8] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:17 [http-nio-8083-exec-8] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:17 [http-nio-8083-exec-8] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:17 [http-nio-8083-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:18 [http-nio-8083-exec-9] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:18 [http-nio-8083-exec-9] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:18 [http-nio-8083-exec-9] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:18 [http-nio-8083-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:19 [http-nio-8083-exec-10] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:19 [http-nio-8083-exec-10] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:19 [http-nio-8083-exec-10] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:19 [http-nio-8083-exec-10] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:19 [http-nio-8083-exec-3] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:19 [http-nio-8083-exec-3] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:19 [http-nio-8083-exec-3] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:19 [http-nio-8083-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:20 [http-nio-8083-exec-1] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:20 [http-nio-8083-exec-1] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:20 [http-nio-8083-exec-1] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:20 [http-nio-8083-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:38 [http-nio-8083-exec-2] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:38 [http-nio-8083-exec-2] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:38 [http-nio-8083-exec-2] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:38 [http-nio-8083-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:39 [http-nio-8083-exec-4] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:39 [http-nio-8083-exec-4] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:39 [http-nio-8083-exec-4] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:39 [http-nio-8083-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:40 [http-nio-8083-exec-5] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:40 [http-nio-8083-exec-5] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:40 [http-nio-8083-exec-5] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:40 [http-nio-8083-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:46 [http-nio-8083-exec-6] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:46 [http-nio-8083-exec-6] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:46 [http-nio-8083-exec-6] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:46 [http-nio-8083-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 15:57:47 [http-nio-8083-exec-7] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 15:57:47 [http-nio-8083-exec-7] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 15:57:47 [http-nio-8083-exec-7] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1 status=404 NOT_FOUND message=Inventory not found for productId: 1
+2026-03-16 15:57:47 [http-nio-8083-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Inventory not found for productId: 1"]
+2026-03-16 16:00:46 [http-nio-8083-exec-10] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory - creating inventory productId=1 initialStock=100
+2026-03-16 16:00:46 [http-nio-8083-exec-10] INFO  c.m.i.services.InventoryService - [inventory-service] Creating inventory productId=1 initialStock=100
+2026-03-16 16:00:46 [http-nio-8083-exec-10] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory status=409 CONFLICT message=Inventory already exists for productId: 1
+2026-03-16 16:00:46 [http-nio-8083-exec-10] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 409 CONFLICT "Inventory already exists for productId: 1"]
+2026-03-16 16:01:43 [http-nio-8083-exec-3] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory - creating inventory productId=1 initialStock=100
+2026-03-16 16:01:43 [http-nio-8083-exec-3] INFO  c.m.i.services.InventoryService - [inventory-service] Creating inventory productId=1 initialStock=100
+2026-03-16 16:01:43 [http-nio-8083-exec-3] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory status=409 CONFLICT message=Inventory already exists for productId: 1
+2026-03-16 16:01:43 [http-nio-8083-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 409 CONFLICT "Inventory already exists for productId: 1"]
+2026-03-16 16:04:07 [http-nio-8083-exec-4] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 16:04:07 [http-nio-8083-exec-4] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 16:04:12 [http-nio-8083-exec-5] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 16:04:12 [http-nio-8083-exec-5] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 16:04:12 [http-nio-8083-exec-5] WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-03-16 16:04:19 [http-nio-8083-exec-6] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory/7/reserve - reserving stock referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 reason=Order creation
+2026-03-16 16:04:19 [http-nio-8083-exec-6] INFO  c.m.i.services.InventoryService - [inventory-service] Stock reserved productId=7 referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 available=28 reserved=2
+2026-03-16 16:04:19 [http-nio-8083-exec-7] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory/1/reserve - reserving stock referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=14544 reason=Order creation
+2026-03-16 16:04:19 [http-nio-8083-exec-7] WARN  c.m.i.e.GlobalExceptionHandler - [inventory-service] ResponseStatusException at path=/api/v1/inventory/1/reserve status=400 BAD_REQUEST message=Insufficient available stock for productId: 1
+2026-03-16 16:04:19 [http-nio-8083-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST "Insufficient available stock for productId: 1"]
+2026-03-16 16:04:19 [http-nio-8083-exec-8] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory/7/release - releasing stock referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 reason=Order creation failed - releasing reserved stock
+2026-03-16 16:04:19 [http-nio-8083-exec-8] INFO  c.m.i.services.InventoryService - [inventory-service] Stock released productId=7 referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 available=30 reserved=0
+2026-03-16 16:04:25 [http-nio-8083-exec-9] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory/7/reserve - reserving stock referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 reason=Order creation
+2026-03-16 16:04:25 [http-nio-8083-exec-9] INFO  c.m.i.services.InventoryService - [inventory-service] Stock reserved productId=7 referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 available=28 reserved=2
+2026-03-16 16:04:25 [http-nio-8083-exec-10] INFO  c.m.i.c.InventoryController - [inventory-service] POST /api/v1/inventory/1/reserve - reserving stock referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 reason=Order creation
+2026-03-16 16:04:25 [http-nio-8083-exec-10] INFO  c.m.i.services.InventoryService - [inventory-service] Stock reserved productId=1 referenceType=ORDER referenceNumber=checkout-20260209-510e8401-e29b-41d4-a716-446655440000 quantity=2 available=13 reserved=2
+2026-03-16 16:04:57 [http-nio-8083-exec-3] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 16:04:57 [http-nio-8083-exec-3] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 16:05:00 [http-nio-8083-exec-1] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory/1 - fetching inventory
+2026-03-16 16:05:00 [http-nio-8083-exec-1] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventory for productId=1
+2026-03-16 21:57:06 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 51160 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 21:57:06 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 21:57:06 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 21:57:06 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 21:57:07 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 21:57:08 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 21:57:08 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56 ms. Found 2 JPA repository interfaces.
+2026-03-16 21:57:08 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 21:57:08 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 21:57:08 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 21:57:08 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 21:57:08 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1950 ms
+2026-03-16 21:57:09 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 21:57:09 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 21:57:09 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 21:57:09 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 21:57:10 [restartedMain] WARN  org.hibernate.orm.jdbc.error - HHH000247: ErrorCode: 0, SQLState: 08S01
+2026-03-16 21:57:10 [restartedMain] WARN  org.hibernate.orm.jdbc.error - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2026-03-16 21:57:10 [restartedMain] WARN  org.hibernate.orm.jdbc - HHH100046: Could not obtain connection to query JDBC database metadata
+org.hibernate.exception.JDBCConnectionException: Unable to obtain isolated JDBC connection [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:34)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:115)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:101)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:51)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:366)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironment(JdbcEnvironmentInitiator.java:143)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:120)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:80)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:133)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:260)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:235)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:212)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:44)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:251)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:203)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1392)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.populateSessionFactoryBuilder(EntityManagerFactoryBuilderImpl.java:1472)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.microservice.inventory.InventoryServiceApplication.main(InventoryServiceApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:165)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:55)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:840)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:416)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:373)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:210)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DataSourceConnectionProvider.getConnection(DataSourceConnectionProvider.java:137)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:508)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:48)
+	... 40 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:52)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:95)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:140)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:156)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:79)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:142)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:964)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	... 53 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:144)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53)
+	... 56 common frames omitted
+2026-03-16 21:57:10 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 21:57:10 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [undefined/unknown]
+	Database driver: undefined/unknown
+	Database dialect: MySQLDialect
+	Database version: 8.0
+	Default catalog/schema: unknown/unknown
+	Autocommit mode: undefined/unknown
+	Isolation level: NONE [default NONE]
+	JDBC fetch size: undefined/unknown
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 21:57:11 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 21:57:11 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 21:57:12 [restartedMain] WARN  org.hibernate.orm.jdbc.error - HHH000247: ErrorCode: 0, SQLState: 08S01
+2026-03-16 21:57:12 [restartedMain] WARN  org.hibernate.orm.jdbc.error - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2026-03-16 21:57:12 [restartedMain] ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: Unable to build Hibernate SessionFactory  [persistence unit: default] ; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+2026-03-16 21:57:12 [restartedMain] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Unable to build Hibernate SessionFactory  [persistence unit: default] ; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+2026-03-16 21:57:12 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-16 21:57:12 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-16 21:57:12 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Unable to build Hibernate SessionFactory  [persistence unit: default] ; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.microservice.inventory.InventoryServiceApplication.main(InventoryServiceApplication.java:10)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
+Caused by: jakarta.persistence.PersistenceException: Unable to build Hibernate SessionFactory  [persistence unit: default] ; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:448)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	... 18 common frames omitted
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:34)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:115)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:101)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:71)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:37)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:61)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcDatabaseMetaData(ImprovedExtractionContextImpl.java:68)
+	at org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl.getJdbcDatabaseMetaData(InformationExtractorJdbcDatabaseMetaDataImpl.java:38)
+	at org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl.processTableResultSet(InformationExtractorJdbcDatabaseMetaDataImpl.java:76)
+	at org.hibernate.tool.schema.extract.internal.AbstractInformationExtractorImpl.getTables(AbstractInformationExtractorImpl.java:496)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.getTablesInformation(DatabaseInformationImpl.java:124)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:72)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436)
+	... 22 common frames omitted
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:165)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:55)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:840)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:416)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:373)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:210)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DataSourceConnectionProvider.getConnection(DataSourceConnectionProvider.java:137)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:508)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:44)
+	... 45 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:52)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:95)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:140)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:156)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:79)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:142)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:964)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	... 58 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:144)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53)
+	... 61 common frames omitted
+2026-03-16 21:58:41 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 52332 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 21:58:41 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 21:58:41 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 21:58:41 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 21:58:42 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 21:58:42 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 21:58:42 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 2 JPA repository interfaces.
+2026-03-16 21:58:43 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 21:58:43 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 21:58:43 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 21:58:43 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 21:58:43 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2105 ms
+2026-03-16 21:58:44 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 21:58:44 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 21:58:44 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 21:58:44 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 21:58:45 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2be2655d
+2026-03-16 21:58:45 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-16 21:58:45 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 21:58:45 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 21:58:46 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 21:58:46 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 21:58:46 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-16 21:58:47 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 21:58:47 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 21:58:47 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 21:58:47 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 6.276 seconds (process running for 7.072)
+2026-03-16 21:58:47 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 21:58:47 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 22:41:23 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 33 class path changes (0 additions, 33 deletions, 0 modifications)
+2026-03-16 22:41:23 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 22:41:23 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:23 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 22:41:23 [Thread-1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:23 [Thread-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:23 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-16 22:41:23 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-16 22:41:23 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 52332 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 22:41:23 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 22:41:24 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 22:41:24 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 2 JPA repository interfaces.
+2026-03-16 22:41:24 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 22:41:24 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:24 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 22:41:24 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 22:41:24 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 712 ms
+2026-03-16 22:41:24 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 22:41:24 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 22:41:24 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-03-16 22:41:24 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2705acc1
+2026-03-16 22:41:24 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-03-16 22:41:24 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 22:41:24 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 22:41:25 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 22:41:25 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:25 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 22:41:25 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:25 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 22:41:25 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.733 seconds (process running for 2565.422)
+2026-03-16 22:41:25 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 22:41:25 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 22:41:25 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 22:41:27 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 33 class path changes (33 additions, 0 deletions, 0 modifications)
+2026-03-16 22:41:27 [Thread-5] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 22:41:27 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:27 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 22:41:27 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:27 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:27 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-03-16 22:41:27 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-03-16 22:41:27 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 52332 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 22:41:27 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 22:41:27 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 22:41:27 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 2 JPA repository interfaces.
+2026-03-16 22:41:27 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 22:41:27 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:27 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 22:41:27 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 22:41:27 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 506 ms
+2026-03-16 22:41:27 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 22:41:27 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 22:41:27 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-03-16 22:41:27 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f75791d
+2026-03-16 22:41:27 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-03-16 22:41:27 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 22:41:27 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 22:41:27 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 22:41:27 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:28 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 22:41:28 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:28 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 22:41:28 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.121 seconds (process running for 2568.051)
+2026-03-16 22:41:28 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 22:41:28 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 22:41:28 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 22:41:35 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 31 class path changes (0 additions, 0 deletions, 31 modifications)
+2026-03-16 22:41:35 [Thread-9] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 22:41:35 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:35 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 22:41:35 [Thread-9] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:35 [Thread-9] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:35 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2026-03-16 22:41:35 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2026-03-16 22:41:35 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 52332 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 22:41:35 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 22:41:35 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 22:41:35 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+2026-03-16 22:41:35 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 22:41:35 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:35 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 22:41:35 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 22:41:35 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 497 ms
+2026-03-16 22:41:35 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 22:41:35 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 22:41:35 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2026-03-16 22:41:36 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@676a04db
+2026-03-16 22:41:36 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2026-03-16 22:41:36 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 22:41:36 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 22:41:36 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 22:41:36 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:36 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 22:41:36 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:36 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 22:41:36 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.022 seconds (process running for 2576.148)
+2026-03-16 22:41:36 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 22:41:36 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 22:41:36 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 22:41:54 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 31 class path changes (0 additions, 0 deletions, 31 modifications)
+2026-03-16 22:41:54 [Thread-13] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 22:41:54 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:54 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 22:41:54 [Thread-13] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:54 [Thread-13] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:54 [Thread-13] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2026-03-16 22:41:54 [Thread-13] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2026-03-16 22:41:54 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 52332 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 22:41:54 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 22:41:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 22:41:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
+2026-03-16 22:41:55 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 22:41:55 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:55 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 22:41:55 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 22:41:55 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 809 ms
+2026-03-16 22:41:55 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 22:41:55 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 22:41:55 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2026-03-16 22:41:55 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@66df7317
+2026-03-16 22:41:55 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2026-03-16 22:41:55 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 22:41:55 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 22:41:55 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 22:41:55 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 22:41:56 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 22:41:56 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 22:41:56 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 22:41:56 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.415 seconds (process running for 2595.974)
+2026-03-16 22:41:56 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 22:41:56 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 22:41:56 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 22:44:31 [http-nio-8083-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-16 22:44:31 [http-nio-8083-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-16 22:44:31 [http-nio-8083-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-03-16 22:44:31 [http-nio-8083-exec-2] INFO  c.m.i.c.InventoryController - [inventory-service] GET /api/v1/inventory - fetching inventory page=0 size=20
+2026-03-16 22:44:31 [http-nio-8083-exec-2] INFO  c.m.i.services.InventoryService - [inventory-service] Fetching inventories page=0 size=20
+2026-03-16 22:44:31 [http-nio-8083-exec-2] WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-03-16 23:29:50 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 55116 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 23:29:50 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 23:29:50 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-16 23:29:50 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-16 23:29:50 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-03-16 23:29:51 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 23:29:51 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 2 JPA repository interfaces.
+2026-03-16 23:29:51 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 23:29:51 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:29:51 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 23:29:51 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 23:29:52 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1645 ms
+2026-03-16 23:29:52 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 23:29:52 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-03-16 23:29:52 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 23:29:52 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-16 23:29:53 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4bbda3f
+2026-03-16 23:29:53 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-16 23:29:53 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 23:29:53 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 23:29:54 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 23:29:54 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 23:29:54 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-16 23:29:55 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 23:29:55 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:29:55 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 23:29:55 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 5.517 seconds (process running for 6.278)
+2026-03-16 23:29:55 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 23:29:55 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 23:31:43 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 33 class path changes (0 additions, 33 deletions, 0 modifications)
+2026-03-16 23:31:43 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 23:31:43 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:43 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 23:31:43 [Thread-1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:43 [Thread-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 23:31:43 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-16 23:31:43 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-16 23:31:43 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 55116 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 23:31:43 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 23:31:43 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 23:31:43 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 2 JPA repository interfaces.
+2026-03-16 23:31:44 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 23:31:44 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:44 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 23:31:44 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 23:31:44 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 916 ms
+2026-03-16 23:31:44 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 23:31:44 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 23:31:44 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-03-16 23:31:44 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ea9bb56
+2026-03-16 23:31:44 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-03-16 23:31:44 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 23:31:44 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 23:31:44 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 23:31:44 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 23:31:45 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 23:31:45 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:45 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 23:31:45 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.821 seconds (process running for 115.941)
+2026-03-16 23:31:45 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 23:31:45 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 23:31:45 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 23:31:46 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 33 class path changes (33 additions, 0 deletions, 0 modifications)
+2026-03-16 23:31:46 [Thread-5] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 23:31:46 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:46 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 23:31:46 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:46 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 23:31:46 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-03-16 23:31:46 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-03-16 23:31:46 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 55116 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 23:31:46 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 23:31:46 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 23:31:46 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 2 JPA repository interfaces.
+2026-03-16 23:31:47 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 23:31:47 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:47 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 23:31:47 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 23:31:47 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 497 ms
+2026-03-16 23:31:47 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 23:31:47 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 23:31:47 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-03-16 23:31:47 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@dccf7d9
+2026-03-16 23:31:47 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-03-16 23:31:47 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 23:31:47 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 23:31:47 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 23:31:47 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 23:31:47 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 23:31:47 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:31:47 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 23:31:47 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.339 seconds (process running for 118.78)
+2026-03-16 23:31:47 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 23:31:47 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 23:31:47 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-16 23:51:00 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 31 class path changes (0 additions, 0 deletions, 31 modifications)
+2026-03-16 23:51:00 [Thread-9] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-16 23:51:00 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:51:00 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-16 23:51:00 [Thread-9] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:51:00 [Thread-9] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 23:51:00 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2026-03-16 23:51:00 [Thread-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2026-03-16 23:51:00 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Starting InventoryServiceApplication using Java 25.0.2 with PID 55116 (C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service\target\classes started by Usuario in C:\Users\Usuario\Desktop\spring-microservices-ecommerce-platform\microservices-platform\inventory-service)
+2026-03-16 23:51:00 [restartedMain] INFO  c.m.i.InventoryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-16 23:51:00 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 2 JPA repository interfaces.
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8083 (http)
+2026-03-16 23:51:01 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:51:01 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-16 23:51:01 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 604 ms
+2026-03-16 23:51:01 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-16 23:51:01 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2026-03-16 23:51:01 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3629724c
+2026-03-16 23:51:01 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2026-03-16 23:51:01 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-16 23:51:01 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3309/ms_inventory]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: ms_inventory/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-16 23:51:01 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-03-16 23:51:01 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8083 (http) with context path '/'
+2026-03-16 23:51:01 [restartedMain] INFO  c.m.i.InventoryServiceApplication - Started InventoryServiceApplication in 1.319 seconds (process running for 1272.768)
+2026-03-16 23:51:01 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-16 23:51:01 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /index.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-16 23:51:01 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged

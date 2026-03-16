@@ -8,7 +8,7 @@ SELECT * FROM categories;
 
 INSERT INTO products (category_id, deleted, description, name, price, sku, status) VALUES
 (1,0,'Laptop profesional con pantalla OLED y gran rendimiento','Laptop Studio Pro',2199.99,'SKU-LAPTOP-005','ACTIVE'),
-(1,0,'Portátil ultraligero para viajes y trabajo remoto','Travel Laptop 13',1099.99,'SKU-LAPTOP-006','ACTIVE'),
+(1,0,'Portátil ultraligero para viajes y trabajo remoto','Travel Laptop 13',1099.99,'SKU-LAPTOP-006','INACTIVE'),
 (1,0,'Laptop para programación con 32GB RAM','Developer Laptop X',1999.99,'SKU-LAPTOP-007','ACTIVE'),
 (1,0,'Laptop económica para tareas básicas','Laptop Essential',699.99,'SKU-LAPTOP-008','ACTIVE'),
 (1,0,'Laptop convertible 2 en 1 con pantalla táctil','Laptop Flex 2in1',1299.99,'SKU-LAPTOP-009','ACTIVE'),
