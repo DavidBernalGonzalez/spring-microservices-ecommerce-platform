@@ -98,6 +98,35 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
     }
 
+    @ExceptionHandler(ProductNotAvailableForOrderException.class)
+    public ResponseEntity<ApiError> handleProductNotAvailable(
+            ProductNotAvailableForOrderException ex,
+            HttpServletRequest request) {
+
+        log.warn("[{}] Product not available for order at path={} productId={} status={}",
+                SERVICE,
+                request.getRequestURI(),
+                ex.getProductId(),
+                ex.getCurrentStatus());
+
+        ApiFieldError fieldError = ApiFieldError.builder()
+                .field("productId")
+                .message("Product " + ex.getProductId() + " is not available for purchase. Current status: " + ex.getCurrentStatus() + ". Only ACTIVE products can be ordered.")
+                .allowedValues(List.of("ACTIVE"))
+                .rejectedValues(List.of("INACTIVE", "OUT_OF_STOCK", "DISCONTINUED"))
+                .build();
+
+        ApiError apiError = ApiError.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .error("Bad Request")
+                .path(request.getRequestURI())
+                .errors(List.of(fieldError))
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+    }
+
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<ApiError> handleResponseStatusException(
             ResponseStatusException ex,

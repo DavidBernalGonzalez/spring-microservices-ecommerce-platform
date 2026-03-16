@@ -17,4 +17,5 @@ public class ProductResponse {
     private String name;
     private BigDecimal price;
     private BigDecimal taxRate;
+    private String status;
 }

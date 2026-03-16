@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.microservice.order.clients.ProductClient;
 import com.microservice.order.clients.ProductResponse;
 import com.microservice.order.dto.request.OrderRequestDto;
+import com.microservice.order.exceptions.ProductNotAvailableForOrderException;
 import com.microservice.order.dto.response.OrderResponseDto;
 import com.microservice.order.entities.Order;
 import com.microservice.order.entities.OrderItem;
@@ -118,6 +119,13 @@ public class OrderService {
                         HttpStatus.BAD_REQUEST,
                         "Product price is null for product: " + item.getProductId()
                 );
+            }
+
+            if (!"ACTIVE".equals(product.getStatus())) {
+
+                log.warn("[{}] Product not available for purchase productId={} status={}", SERVICE, item.getProductId(), product.getStatus());
+
+                throw new ProductNotAvailableForOrderException(item.getProductId(), product.getStatus());
             }
 
             BigDecimal unitPrice = product.getPrice().setScale(MONEY_SCALE, RoundingMode.HALF_UP);
