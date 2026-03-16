@@ -2,7 +2,10 @@ package com.microservice.order.services;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,9 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.microservice.order.clients.InventoryClient;
+import com.microservice.order.clients.InventoryReserveRequest;
 import com.microservice.order.clients.ProductClient;
 import com.microservice.order.clients.ProductResponse;
 import com.microservice.order.dto.request.OrderRequestDto;
+import com.microservice.order.exceptions.InsufficientStockException;
 import com.microservice.order.exceptions.ProductNotAvailableForOrderException;
 import com.microservice.order.dto.response.OrderResponseDto;
 import com.microservice.order.entities.Order;
@@ -20,6 +26,7 @@ import com.microservice.order.entities.OrderItem;
 import com.microservice.order.mapper.OrderMapper;
 import com.microservice.order.repositories.OrderRepository;
 
+import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -33,10 +40,12 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final ProductClient productClient;
+    private final InventoryClient inventoryClient;
 
-    public OrderService(OrderRepository orderRepository, ProductClient productClient) {
+    public OrderService(OrderRepository orderRepository, ProductClient productClient, InventoryClient inventoryClient) {
         this.orderRepository = orderRepository;
         this.productClient = productClient;
+        this.inventoryClient = inventoryClient;
     }
 
     public Page<OrderResponseDto> getAll(Pageable pageable) {
@@ -64,19 +73,6 @@ public class OrderService {
         log.info("[{}] Creating order idempotencyKey={}", SERVICE, request.getIdempotencyKey());
 
         Order incomingOrder = OrderMapper.toEntity(request);
-
-        if (incomingOrder.getIdempotencyKey() != null && !incomingOrder.getIdempotencyKey().isBlank()) {
-            Optional<Order> existingOrder =
-                    orderRepository.findWithItemsByIdempotencyKey(incomingOrder.getIdempotencyKey()); // 👈 también fetch join
-
-            if (existingOrder.isPresent()) {
-                log.info("[{}] Idempotent request detected returning existing order orderId={}",
-                        SERVICE,
-                        existingOrder.get().getId());
-
-                return new OrderCreationResult(existingOrder.get(), false);
-            }
-        }
 
         if (incomingOrder.getOrderItems() == null || incomingOrder.getOrderItems().isEmpty()) {
             log.warn("[{}] Order creation failed no items provided", SERVICE);
@@ -203,6 +199,51 @@ public class OrderService {
         incomingOrder.setTaxTotal(taxTotal.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
         incomingOrder.setTotal(total.setScale(MONEY_SCALE, RoundingMode.HALF_UP));
 
+        if (incomingOrder.getIdempotencyKey() != null && !incomingOrder.getIdempotencyKey().isBlank()) {
+            Optional<Order> existingOrder =
+                    orderRepository.findWithItemsByIdempotencyKey(incomingOrder.getIdempotencyKey());
+
+            if (existingOrder.isPresent()) {
+                log.info("[{}] Idempotent request detected returning existing order orderId={}",
+                        SERVICE,
+                        existingOrder.get().getId());
+
+                return new OrderCreationResult(existingOrder.get(), false);
+            }
+        }
+
+        String reserveRef = incomingOrder.getIdempotencyKey() != null && !incomingOrder.getIdempotencyKey().isBlank()
+                ? incomingOrder.getIdempotencyKey()
+                : "order-" + UUID.randomUUID();
+
+        List<ReservedItem> reservedItems = new ArrayList<>();
+        try {
+            for (OrderItem item : incomingOrder.getOrderItems()) {
+                InventoryReserveRequest reserveRequest = InventoryReserveRequest.builder()
+                        .referenceType("ORDER")
+                        .referenceNumber(reserveRef)
+                        .quantity(item.getQuantity())
+                        .reason("Order creation")
+                        .build();
+
+                try {
+                    inventoryClient.reserveStock(item.getProductId(), reserveRequest);
+                    reservedItems.add(new ReservedItem(item.getProductId(), item.getQuantity()));
+                    log.info("[{}] Stock reserved productId={} quantity={}", SERVICE, item.getProductId(), item.getQuantity());
+                } catch (FeignException e) {
+                    String detail = switch (e.status()) {
+                        case 404 -> "Inventory not found for product";
+                        case 400 -> parseInventoryError(e);
+                        default -> "Inventory service error (status " + e.status() + ")";
+                    };
+                    throw new InsufficientStockException(item.getProductId(), item.getQuantity(), detail);
+                }
+            }
+        } catch (InsufficientStockException e) {
+            releaseReservedStock(reservedItems, reserveRef);
+            throw e;
+        }
+
         log.info("[{}] Order totals subtotal={} discount={} tax={} total={}",
                 SERVICE,
                 pvpSubtotal,
@@ -210,20 +251,52 @@ public class OrderService {
                 taxTotal,
                 total);
 
-        Order savedOrder = orderRepository.save(incomingOrder);
+        try {
+            Order savedOrder = orderRepository.save(incomingOrder);
 
-        String orderNumber = "ORD-" + String.format("%06d", savedOrder.getId());
-        savedOrder.setOrderNumber(orderNumber);
+            String orderNumber = "ORD-" + String.format("%06d", savedOrder.getId());
+            savedOrder.setOrderNumber(orderNumber);
 
-        Order finalOrder = orderRepository.save(savedOrder);
+            Order finalOrder = orderRepository.save(savedOrder);
 
-        log.info("[{}] Order created successfully orderId={} orderNumber={}",
-                SERVICE,
-                finalOrder.getId(),
-                finalOrder.getOrderNumber());
+            log.info("[{}] Order created successfully orderId={} orderNumber={}",
+                    SERVICE,
+                    finalOrder.getId(),
+                    finalOrder.getOrderNumber());
 
-        return new OrderCreationResult(finalOrder, true);
+            return new OrderCreationResult(finalOrder, true);
+        } catch (Exception e) {
+            releaseReservedStock(reservedItems, reserveRef);
+            throw e;
+        }
     }
+
+    private void releaseReservedStock(List<ReservedItem> reservedItems, String reserveRef) {
+        for (int i = reservedItems.size() - 1; i >= 0; i--) {
+            ReservedItem ri = reservedItems.get(i);
+            try {
+                InventoryReserveRequest releaseRequest = InventoryReserveRequest.builder()
+                        .referenceType("ORDER")
+                        .referenceNumber(reserveRef)
+                        .quantity(ri.quantity())
+                        .reason("Order creation failed - releasing reserved stock")
+                        .build();
+                inventoryClient.releaseStock(ri.productId(), releaseRequest);
+                log.info("[{}] Stock released productId={} quantity={}", SERVICE, ri.productId(), ri.quantity());
+            } catch (Exception ex) {
+                log.error("[{}] Failed to release stock productId={} quantity={}", SERVICE, ri.productId(), ri.quantity(), ex);
+            }
+        }
+    }
+
+    private String parseInventoryError(FeignException ex) {
+        if (ex.contentUTF8() != null && ex.contentUTF8().contains("Insufficient")) {
+            return "Insufficient available stock";
+        }
+        return "Inventory service error (status " + ex.status() + ")";
+    }
+
+    private record ReservedItem(Long productId, Integer quantity) {}
 
     public OrderResponseDto toResponseDto(Order order) {
         return OrderMapper.toDto(order);
