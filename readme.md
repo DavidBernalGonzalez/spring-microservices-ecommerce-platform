@@ -22,33 +22,53 @@ Plataforma de e-commerce basada en **microservicios** con Spring Boot, Spring Cl
 ## Arquitectura
 
 ```
-                    ┌─────────────────────────────────────┐
-                    │         API Gateway (8088)           │
-                    │    Spring Cloud Gateway (WebFlux)    │
-                    └─────────────────┬───────────────────┘
-                                      │
-         ┌────────────────────────────┼────────────────────────────┐
-         │                            │                            │
-         ▼                            ▼                            ▼
-┌─────────────────┐      ┌─────────────────────┐      ┌─────────────────────┐
-│ product-service │      │   order-service     │      │  inventory-service  │
-│     (8081)      │◄─────│      (8082)         │─────►│       (8083)        │
-│                 │      │                     │      │                     │
-│ • Products      │      │ • Orders            │      │ • Stock             │
-│ • Categories    │      │ • OrderItems        │      │ • Reserve/Release   │
-└────────┬────────┘      └──────────┬──────────┘      └──────────┬──────────┘
-         │                          │                            │
-         ▼                          ▼                            ▼
-┌─────────────────┐      ┌─────────────────────┐      ┌─────────────────────┐
-│   ms_products   │      │     ms_orders       │      │   ms_inventory      │
-│   MySQL :3307   │      │   MySQL :3308       │      │   MySQL :3309       │
-└─────────────────┘      └─────────────────────┘      └─────────────────────┘
+                          ┌─────────────────────────────────────┐
+                          │         API Gateway (8088)          │
+                          │    Spring Cloud Gateway (WebFlux)   │
+                          │         (enruta peticiones)         │
+                          └─────────────────┬───────────────────┘
+                                            │
+              ┌─────────────────────────────┼─────────────────────────────┐
+              │                             │                             │
+              ▼                             ▼                             ▼
+    ┌──────────────────┐          ┌──────────────────┐          ┌───────────────────┐
+    │  product-service │◄─────────│  order-service   │─────────►│ inventory-service │
+    │      (8081)      │  Feign   │      (8082)      │  Feign   │      (8083)       │
+    │                  │  Client  │                  │  Client  │                   │
+    │ • Products       │          │ • Orders         │          │ • Stock           │
+    │ • Categories     │          │ • OrderItems     │          │ • Reserve/Release │
+    └────────┬─────────┘          └────────┬─────────┘          └────────┬──────────┘
+             ▲                             │                             │
+             │ RestClient                  │                             │
+             └─────────────────────────────┼─────────────────────────────┘
+             │         inventory → product (valida existe)               │
+             │                                                           │
+             ▼                                                           ▼
+    ┌──────────────────┐         ┌──────────────────┐          ┌──────────────────┐
+    │   ms_products    │         │    ms_orders     │          │   ms_inventory   │
+    │   MySQL :3307    │         │   MySQL :3308    │          │   MySQL :3309    │
+    └──────────────────┘         └──────────────────┘          └──────────────────┘
+
+    Llamadas entre servicios:
+    • order-service ──FeignClient──► product-service  (ProductClient: GET /products/{id})
+    • order-service ──FeignClient──► inventory-service (InventoryClient: reserve, release)
+    • inventory-service ──RestClient──► product-service (ProductClient: valida producto existe)
 ```
 
 **Flujo de órdenes:**
 1. El cliente envía una orden al **gateway** (`/api/v1/orders`).
 2. **order-service** valida productos con **product-service** y reserva stock con **inventory-service**.
 3. Si todo es correcto, se crea la orden y se confirma la reserva.
+
+**Comunicación entre microservicios (clientes HTTP):**
+
+| Microservicio | Consume | Cliente usado | Descripción |
+|---------------|---------|---------------|-------------|
+| **order-service** | product-service | **FeignClient** | `ProductClient` – obtiene producto por ID para validar items de la orden |
+| **order-service** | inventory-service | **FeignClient** | `InventoryClient` – reserva y libera stock |
+| **inventory-service** | product-service | **RestClient** | `ProductClient` – valida que el producto exista antes de crear inventario |
+| **product-service** | — | — | No consume otros servicios |
+| **gateway-service** | — | — | Solo enruta; no hace llamadas HTTP a los microservicios |
 
 ---
 
@@ -63,6 +83,7 @@ Plataforma de e-commerce basada en **microservicios** con Spring Boot, Spring Cl
 | Base de datos | MySQL 8 |
 | Orquestación | Docker Compose |
 | Comunicación | REST (HTTP) |
+| Clientes HTTP | **FeignClient** (order-service), **RestClient** (inventory-service) |
 
 ---
 
@@ -71,10 +92,10 @@ Plataforma de e-commerce basada en **microservicios** con Spring Boot, Spring Cl
 ```
 spring-microservices-ecommerce-platform/
 ├── microservices-platform/
-│   ├── gateway-service/      # API Gateway (puerto 8088)
-│   ├── product-service/     # Productos y categorías (puerto 8081)
-│   ├── order-service/       # Órdenes (puerto 8082)
-│   └── inventory-service/   # Inventario (puerto 8083)
+│   ├── gateway-service/      # API Gateway (puerto 8088) – sin clientes HTTP
+│   ├── product-service/      # Productos y categorías (puerto 8081) – sin clientes HTTP
+│   ├── order-service/        # Órdenes (puerto 8082) – FeignClient → product, inventory
+│   └── inventory-service/    # Inventario (puerto 8083) – RestClient → product
 ├── contracts/                # Contratos OpenAPI (product-api, inventory-api)
 ├── postman/                  # Colección Postman para pruebas
 ├── docker-compose.yml        # Bases de datos MySQL
