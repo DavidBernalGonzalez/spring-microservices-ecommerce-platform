@@ -20,29 +20,37 @@ spec:
     stages {
         stage('Build & Test - Product Service') {
             steps {
-                dir('microservices-platform/product-service') {
-                    sh 'mvn clean install'
+                container('maven') {
+                    dir('microservices-platform/product-service') {
+                        sh 'mvn clean install'
+                    }
                 }
             }
         }
         stage('Build & Test - Inventory Service') {
             steps {
-                dir('microservices-platform/inventory-service') {
-                    sh 'mvn clean install'
+                container('maven') {
+                    dir('microservices-platform/inventory-service') {
+                        sh 'mvn clean install'
+                    }
                 }
             }
         }
         stage('Build & Test - Order Service') {
             steps {
-                dir('microservices-platform/order-service') {
-                    sh 'mvn clean install'
+                container('maven') {
+                    dir('microservices-platform/order-service') {
+                        sh 'mvn clean install'
+                    }
                 }
             }
         }
         stage('Build & Test - Gateway Service') {
             steps {
-                dir('microservices-platform/gateway-service') {
-                    sh 'mvn clean install'
+                container('maven') {
+                    dir('microservices-platform/gateway-service') {
+                        sh 'mvn clean install'
+                    }
                 }
             }
         }
