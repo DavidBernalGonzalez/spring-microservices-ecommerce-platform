@@ -1,0 +1,49 @@
+# Jenkins Helm chart - valores para entorno local (Docker Desktop)
+# Uso: helm install jenkins jenkins/jenkins -n jenkins --create-namespace -f k8s/jenkins/values.yaml
+
+controller:
+  # Imagen: Jenkins 2.541.3 (ultima version)
+  image:
+    tag: "2.541.3-jdk21"
+
+  # Recursos para entorno local
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "2"
+      memory: "2Gi"
+
+  # Persistencia de datos
+  persistence:
+    enabled: true
+    size: 8Gi
+
+  # Exponer Jenkins (NodePort para Docker Desktop)
+  serviceType: NodePort
+  nodePort: 30080
+
+  # Plugins iniciales
+  installPlugins:
+    - kubernetes
+    - workflow-aggregator
+    - git
+    - pipeline-stage-view
+    - credentials-binding
+    - docker-workflow
+
+  # Java opts para evitar OOM
+  javaOpts: "-Xmx1024m -Djenkins.install.runSetupWizard=false"
+
+  # Desactivar wizard inicial (opcional, para demo)
+  # runSetupWizard: false
+
+  # Configuracion adicional
+  additionalExistingSecrets: []
+
+agent:
+  enabled: true
+  defaultsProviderTemplate: ""
+  # Agentes Kubernetes para ejecutar pipelines
+  podTemplates: {}

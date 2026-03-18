@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-order-pvc
+  namespace: ecommerce
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-order
+  namespace: ecommerce
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-order
+  template:
+    metadata:
+      labels:
+        app: mysql-order
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_DATABASE
+          value: ms_orders
+        - name: MYSQL_USER
+          value: davidBernal
+        - name: MYSQL_PASSWORD
+          value: admin1234
+        - name: MYSQL_ROOT_PASSWORD
+          value: admin1234
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: mysql-order-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-order
+  namespace: ecommerce
+spec:
+  selector:
+    app: mysql-order
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: ClusterIP
