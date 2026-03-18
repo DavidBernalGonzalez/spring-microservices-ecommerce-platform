@@ -45,5 +45,9 @@ controller:
 agent:
   enabled: true
   defaultsProviderTemplate: ""
+  # Tunnel JNLP: el puerto 50000 esta en jenkins-agent, NO en jenkins
+  jenkinsTunnel: "jenkins-agent.jenkins.svc.cluster.local:50000"
+  # Usar WebSocket en lugar de JNLP (alternativa)
+  websocket: true
   # Agentes Kubernetes para ejecutar pipelines
   podTemplates: {}

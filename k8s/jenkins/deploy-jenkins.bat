@@ -42,6 +42,10 @@ helm upgrade --install jenkins jenkins/jenkins ^
   -f "%VALUES_FILE%"
 
 echo.
+echo Aplicando parche jenkinsTunnel (puerto 50000 en jenkins-agent)...
+kubectl apply -f "%SCRIPT_DIR%jcasc-patch.yaml"
+
+echo.
 echo Esperando a que Jenkins este listo (puede tardar 2-3 minutos)...
 kubectl wait --for=condition=ready pod -l app.kubernetes.io/component=jenkins-master -n jenkins --timeout=300s
 

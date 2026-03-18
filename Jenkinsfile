@@ -10,6 +10,10 @@ spec:
     image: maven:3.9-eclipse-temurin-21
     command: ['cat']
     tty: true
+  - name: jnlp
+    env:
+    - name: JENKINS_TUNNEL
+      value: "jenkins-agent.jenkins.svc.cluster.local:50000"
 """
         }
     }
