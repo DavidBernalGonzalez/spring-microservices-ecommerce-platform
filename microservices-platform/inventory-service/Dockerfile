@@ -3,8 +3,10 @@ FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
 
 COPY pom.xml .
+COPY .mvn ./.mvn
+COPY mvnw .
 COPY src ./src
-RUN mvn clean package -DskipTests -B
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests -B
 
 # Run stage
 FROM eclipse-temurin:21-jre
