@@ -1,0 +1,581 @@
+{
+	"info": {
+		"_postman_id": "ecommerce-microservices-prod",
+		"name": "Ecommerce Platform - PROD",
+		"description": "Kubernetes: gateway NodePort 30088, todo via gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "gateway_base_url",
+			"value": "http://localhost:30088"
+		},
+		{
+			"key": "product_base_url",
+			"value": "http://localhost:30088"
+		},
+		{
+			"key": "order_base_url",
+			"value": "http://localhost:30088"
+		},
+		{
+			"key": "inventory_base_url",
+			"value": "http://localhost:30088"
+		},
+		{
+			"key": "api_version",
+			"value": "v1"
+		}
+	],
+	"item": [
+		{
+			"name": "API Gateway",
+			"item": [
+				{
+					"name": "Gateway Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway_base_url}}/actuator/health",
+							"host": ["{{gateway_base_url}}"],
+							"path": ["actuator", "health"]
+						}
+					}
+				},
+				{
+					"name": "Products via Gateway",
+					"item": [
+						{
+							"name": "Get All Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/products?page=0&size=20",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "products"],
+									"query": [{"key": "page", "value": "0"}, {"key": "size", "value": "20"}]
+								}
+							}
+						},
+						{
+							"name": "Get Product by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/products/1",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "products", "1"]
+								}
+							}
+						},
+						{
+							"name": "Create Product",
+							"request": {
+								"method": "POST",
+								"header": [{"key": "Content-Type", "value": "application/json"}],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"sku\": \"SKU-TEST-001\",\n  \"name\": \"Producto Test\",\n  \"description\": \"Descripcion de prueba\",\n  \"price\": 99.99,\n  \"categoryId\": 1,\n  \"status\": \"ACTIVE\"\n}"
+								},
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/products",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "products"]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Categories via Gateway",
+					"item": [
+						{
+							"name": "Get All Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/categories",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "categories"]
+								}
+							}
+						},
+						{
+							"name": "Get Category by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/categories/1",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "categories", "1"]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Orders via Gateway",
+					"item": [
+						{
+							"name": "Get All Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/orders?page=0&size=20",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "orders"],
+									"query": [{"key": "page", "value": "0"}, {"key": "size", "value": "20"}]
+								}
+							}
+						},
+						{
+							"name": "Get Order by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/orders/1",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "orders", "1"]
+								}
+							}
+						},
+						{
+							"name": "Create Order",
+							"request": {
+								"method": "POST",
+								"header": [{"key": "Content-Type", "value": "application/json"}],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idempotencyKey\": \"checkout-20260309-510e8400-e29b-41d4-a716-446655440000\",\n  \"orderItems\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2,\n      \"discount\": 0\n    },\n    {\n      \"productId\": 5,\n      \"quantity\": 1,\n      \"discount\": 0\n    }\n  ]\n}"
+								},
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/orders",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "orders"]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Inventory via Gateway",
+					"item": [
+						{
+							"name": "Get All Inventory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/inventory?page=0&size=20",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "inventory"],
+									"query": [{"key": "page", "value": "0"}, {"key": "size", "value": "20"}]
+								}
+							}
+						},
+						{
+							"name": "Get Inventory by Product ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/inventory/1",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "inventory", "1"]
+								}
+							}
+						},
+						{
+							"name": "Create Inventory",
+							"request": {
+								"method": "POST",
+								"header": [{"key": "Content-Type", "value": "application/json"}],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productId\": 1,\n  \"initialStock\": 100\n}"
+								},
+								"url": {
+									"raw": "{{gateway_base_url}}/api/{{api_version}}/inventory",
+									"host": ["{{gateway_base_url}}"],
+									"path": ["api", "{{api_version}}", "inventory"]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product Service (via Gateway)",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/actuator/health",
+							"host": ["{{product_base_url}}"],
+							"path": ["actuator", "health"]
+						}
+					}
+				},
+				{
+					"name": "Get All Products (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/products?page=0&size=20",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "products"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "20"},
+								{"key": "sort", "value": "id", "disabled": true},
+								{"key": "status", "value": "ACTIVE", "disabled": true},
+								{"key": "categoryId", "value": "1", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/products/1",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "products", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sku\": \"SKU-TEST-001\",\n  \"name\": \"Producto Test\",\n  \"description\": \"Descripción de prueba\",\n  \"price\": 99.99,\n  \"categoryId\": 1,\n  \"status\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/products",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "products"]
+						}
+					}
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sku\": \"SKU-TEST-001\",\n  \"name\": \"Producto Actualizado\",\n  \"description\": \"Nueva descripción\",\n  \"price\": 89.99,\n  \"categoryId\": 1,\n  \"status\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/products/1",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "products", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/products/1",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "products", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Category Service (via Gateway)",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/categories",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/categories/1",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "categories", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Nueva Categoría\",\n  \"taxRate\": 0.21,\n  \"active\": true\n}"
+						},
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/categories",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Categoría Actualizada\",\n  \"taxRate\": 0.10,\n  \"active\": true\n}"
+						},
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/categories/1",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "categories", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/api/{{api_version}}/categories/1",
+							"host": ["{{product_base_url}}"],
+							"path": ["api", "{{api_version}}", "categories", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Order Service (via Gateway)",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/actuator/health",
+							"host": ["{{order_base_url}}"],
+							"path": ["actuator", "health"]
+						}
+					}
+				},
+				{
+					"name": "Get All Orders (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/{{api_version}}/orders?page=0&size=20",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "{{api_version}}", "orders"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "20"},
+								{"key": "sort", "value": "id", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{order_base_url}}/api/{{api_version}}/orders/1",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "{{api_version}}", "orders", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idempotencyKey\": \"checkout-20260309-510e8400-e29b-41d4-a716-446655440000\",\n  \"orderItems\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2,\n      \"discount\": 0\n    },\n    {\n      \"productId\": 5,\n      \"quantity\": 1,\n      \"discount\": 0\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{order_base_url}}/api/{{api_version}}/orders",
+							"host": ["{{order_base_url}}"],
+							"path": ["api", "{{api_version}}", "orders"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Inventory Service (via Gateway)",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/actuator/health",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["actuator", "health"]
+						}
+					}
+				},
+				{
+					"name": "Get All Inventory (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory?page=0&size=20",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory"],
+							"query": [
+								{"key": "page", "value": "0"},
+								{"key": "size", "value": "20"},
+								{"key": "sort", "value": "id", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Inventory by Product ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Inventory Movements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/movements",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1", "movements"]
+						}
+					}
+				},
+				{
+					"name": "Create Inventory",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": 1,\n  \"initialStock\": 100\n}"
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory"]
+						}
+					}
+				},
+				{
+					"name": "Add Stock",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"referenceType\": \"RESTOCK\",\n  \"referenceNumber\": \"RESTOCK-001\",\n  \"quantity\": 50,\n  \"reason\": \"Restock from supplier\"\n}"
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/add",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1", "add"]
+						}
+					}
+				},
+				{
+					"name": "Reserve Stock",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"referenceType\": \"ORDER\",\n  \"referenceNumber\": \"ORD-000001\",\n  \"quantity\": 2,\n  \"reason\": \"Order reservation\"\n}"
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/reserve",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1", "reserve"]
+						}
+					}
+				},
+				{
+					"name": "Release Stock",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"referenceType\": \"ORDER\",\n  \"referenceNumber\": \"ORD-000001\",\n  \"quantity\": 2,\n  \"reason\": \"Order cancelled\"\n}"
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/release",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1", "release"]
+						}
+					}
+				},
+				{
+					"name": "Confirm Output",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"referenceType\": \"ORDER\",\n  \"referenceNumber\": \"ORD-000001\",\n  \"quantity\": 2,\n  \"reason\": \"Order shipped\"\n}"
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/api/{{api_version}}/inventory/1/confirm-output",
+							"host": ["{{inventory_base_url}}"],
+							"path": ["api", "{{api_version}}", "inventory", "1", "confirm-output"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
