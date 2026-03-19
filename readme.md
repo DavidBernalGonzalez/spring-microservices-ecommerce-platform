@@ -45,8 +45,8 @@ Plataforma de e-commerce basada en **microservicios** con Spring Boot, Spring Cl
              │ RestClient                  │                             │
              └─────────────────────────────┼─────────────────────────────┘
              │         inventory → product (valida existe)               │
-             │                                                           │
-             ▼                                                           ▼
+             │                             │                             │
+             ▼                             ▼                             ▼
     ┌──────────────────┐         ┌──────────────────┐          ┌──────────────────┐
     │   ms_products    │         │    ms_orders     │          │   ms_inventory   │
     │   MySQL :3307    │         │   MySQL :3308    │          │   MySQL :3309    │
@@ -127,31 +127,31 @@ La infraestructura se divide en dos entornos dentro del mismo clúster Kubernete
 | `ecommerce` | MySQL (3) + 4 microservicios | CD: aplicación desplegada |
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        CLÚSTER KUBERNETES                               │
-├─────────────────────────────────┬───────────────────────────────────────┤
-│  Namespace: jenkins             │  Namespace: ecommerce                 │
-│                                 │                                       │
-│  ┌─────────────────────────┐    │   ┌─────────────┐  ┌─────────────┐    │
-│  │ Jenkins (Helm)          │    │   │ mysql-      │  │ mysql-      │    │
-│  │ - Controller (StatefulSet)   │   │ product     │  │ order       │    │
-│  │ - NodePort 30080         │   │   │ ClusterIP   │  │ ClusterIP   │    │
-│  │ - PVC 8Gi                │   │   └──────┬──────┘  └──────┬──────┘    │
-│  │ - jenkins-agent (Svc)    │   │          │                │           │
-│  │   puerto 50000 JNLP      │   │   ┌──────┴──────┐  ┌──────┴──────┐    │
-│  └──────────────────────────┘   │    │ product-    │  │ order-     │    │
-│                                 │   │ service     │  │ service     │    │
-│  Pipelines lanzan pods con:     │   │ ClusterIP   │  │ ClusterIP   │    │
-│  - jnlp (conecta a 50000)       │   └──────┬──────┘  └──────┬──────┘    │
-│  - maven (mvn clean install)    │          │                │           │
-│                                 │   ┌──────┴──────┐  ┌──────┴──────┐    │
-│                                 │   │ inventory- │  │ gateway-     │    │
-│                                 │   │ service    │  │ service      │    │
-│                                 │   │ ClusterIP  │  │ NodePort     │    │
-│                                 │   └────────────┘  │ 30088        │    │
-│                                 │                   └──────┬───────┘    │
-└─────────────────────────────────┴──────────────────────────┼────────────┘
-                                                             │
+┌───────────────────────────────────────────────────────────────────────────┐
+│                          CLÚSTER KUBERNETES                               │
+├───────────────────────────────────┬───────────────────────────────────────┤
+│  Namespace: jenkins               │  Namespace: ecommerce                 │
+│                                   │                                       │
+│  ┌────────────────────────────┐   │   ┌─────────────┐  ┌─────────────┐    │
+│  │ Jenkins (Helm)             │   │   │ mysql-      │  │ mysql-      │    │
+│  │ - Controller (StatefulSet) │   │   │ product     │  │ order       │    │
+│  │ - NodePort 30080           │   │   │ ClusterIP   │  │ ClusterIP   │    │
+│  │ - PVC 8Gi                  │   │   └──────┬──────┘  └──────┬──────┘    │
+│  │ - jenkins-agent (Svc)      │   │          │                │           │
+│  │   puerto 50000 JNLP        │   │   ┌──────┴──────┐  ┌──────┴──────┐    │
+│  └────────────────────────────┘   │    │ product-    │  │ order-     │    │
+│                                   │   │ service     │  │ service     │    │
+│  Pipelines lanzan pods con:       │   │ ClusterIP   │  │ ClusterIP   │    │
+│  - jnlp (conecta a 50000)         │   └──────┬──────┘  └──────┬──────┘    │
+│  - maven (mvn clean install)      │          │                │           │
+│                                   │   ┌──────┴──────┐  ┌──────┴──────┐    │
+│                                   │   │ inventory-  │  │ gateway-    │    │
+│                                   │   │ service     │  │ service     │    │
+│                                   │   │ ClusterIP   │  │ NodePort    │    │
+│                                   │   └─────────────┘  │ 30088       │    │
+│                                   │                   └──────┬───────┘    │
+└───────────────────────────────────┴──────────────────────────┼────────────┘
+                                                               │
                                                     http://localhost:30088
 ```
 
