@@ -139,7 +139,7 @@ La infraestructura se divide en dos entornos dentro del mismo clúster Kubernete
 │  │ - PVC 8Gi                  │   │   └──────┬──────┘  └──────┬──────┘    │
 │  │ - jenkins-agent (Svc)      │   │          │                │           │
 │  │   puerto 50000 JNLP        │   │   ┌──────┴──────┐  ┌──────┴──────┐    │
-│  └────────────────────────────┘   │    │ product-    │  │ order-     │    │
+│  └────────────────────────────┘   │   │ product-    │  │ order-      │    │
 │                                   │   │ service     │  │ service     │    │
 │  Pipelines lanzan pods con:       │   │ ClusterIP   │  │ ClusterIP   │    │
 │  - jnlp (conecta a 50000)         │   └──────┬──────┘  └──────┬──────┘    │
