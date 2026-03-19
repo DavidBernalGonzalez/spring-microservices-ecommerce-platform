@@ -123,7 +123,7 @@ La infraestructura se divide en dos entornos dentro del mismo clúster Kubernete
 
 | Namespace | Contenido | Propósito |
 |-----------|------------|-----------|
-| `jenkins` | Jenkins controller + agentes | CI: compilar y probar en cada push |
+| `jenkins` | Jenkins controller + agentes | CI: compilar y probar (cuando se dispara el pipeline) |
 | `ecommerce` | MySQL (3) + 4 microservicios | CD: aplicación desplegada |
 
 ```
@@ -403,7 +403,7 @@ Este proyecto incluye un pipeline de **Integración Continua (CI)** y **Desplieg
 
 ### ¿Qué es CI/CD?
 
-- **CI (Integración Continua):** Cada vez que subes código (por ejemplo con `git push`), el sistema compila el proyecto y ejecuta los tests de forma automática. Si algo falla, te avisa antes de que el error llegue a producción.
+- **CI (Integración Continua):** Cuando se ejecuta el pipeline (manual o con webhook), Jenkins compila el proyecto y ejecuta los tests. Si algo falla, te avisa antes de que el error llegue a producción. Para que corra automáticamente en cada push, hay que configurar un webhook de GitHub hacia Jenkins.
 - **CD (Despliegue Continuo):** Una vez que el código está validado, se empaqueta en contenedores Docker y se despliega en Kubernetes. Así puedes tener la aplicación corriendo en un entorno similar a producción con un solo comando.
 
 ### Flujo completo
@@ -411,7 +411,7 @@ Este proyecto incluye un pipeline de **Integración Continua (CI)** y **Desplieg
 ```
 git push → GitHub
     ↓
-Jenkins detecta el cambio
+(Webhook o ejecución manual) → Jenkins ejecuta el pipeline
     ↓
 Lanza un pod en Kubernetes con Maven
     ↓
@@ -432,7 +432,7 @@ App disponible en http://localhost:30088
 
 | Componente | Rol |
 |------------|-----|
-| **Jenkins** | Servidor de CI: escucha el repositorio, lanza el pipeline en cada push y ejecuta `mvn clean install` en cada microservicio dentro de un pod de Kubernetes. |
+| **Jenkins** | Servidor de CI: ejecuta el pipeline (manual o vía webhook) y lanza `mvn clean install` en cada microservicio dentro de un pod de Kubernetes. |
 | **Docker** | Empaqueta cada microservicio (Java + JAR) en una imagen. El `Dockerfile` de cada servicio usa Maven para compilar y Eclipse Temurin para ejecutar. |
 | **Kubernetes** | Orquesta los contenedores: crea los pods de MySQL, los servicios (product, order, inventory, gateway) y expone el gateway por NodePort 30088. |
 
@@ -444,7 +444,7 @@ App disponible en http://localhost:30088
    ```
    Jenkins quedará disponible en el puerto que indique el script (por ejemplo, `kubectl port-forward` si usas clúster local).
 
-2. **Configurar el pipeline:** Crea un job en Jenkins que apunte a tu repositorio GitHub y use el `Jenkinsfile` de la raíz del proyecto. En cada push, Jenkins ejecutará el pipeline definido ahí.
+2. **Configurar el pipeline:** Crea un job en Jenkins que apunte a tu repositorio GitHub y use el `Jenkinsfile` de la raíz. Puedes ejecutarlo manualmente o configurar un webhook de GitHub para que se dispare en cada push.
 
 3. **Desplegar la aplicación** (cuando quieras actualizar el entorno K8s):
    ```bash
