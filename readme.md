@@ -128,30 +128,30 @@ La infraestructura se divide en dos entornos dentro del mismo clúster Kubernete
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        CLÚSTER KUBERNETES                                │
+│                        CLÚSTER KUBERNETES                               │
 ├─────────────────────────────────┬───────────────────────────────────────┤
-│  Namespace: jenkins             │  Namespace: ecommerce                  │
-│                                 │                                         │
-│  ┌─────────────────────────┐   │   ┌─────────────┐  ┌─────────────┐    │
-│  │ Jenkins (Helm)          │   │   │ mysql-      │  │ mysql-      │    │
+│  Namespace: jenkins             │  Namespace: ecommerce                 │
+│                                 │                                       │
+│  ┌─────────────────────────┐    │   ┌─────────────┐  ┌─────────────┐    │
+│  │ Jenkins (Helm)          │    │   │ mysql-      │  │ mysql-      │    │
 │  │ - Controller (StatefulSet)   │   │ product     │  │ order       │    │
 │  │ - NodePort 30080         │   │   │ ClusterIP   │  │ ClusterIP   │    │
 │  │ - PVC 8Gi                │   │   └──────┬──────┘  └──────┬──────┘    │
 │  │ - jenkins-agent (Svc)    │   │          │                │           │
 │  │   puerto 50000 JNLP      │   │   ┌──────┴──────┐  ┌──────┴──────┐    │
-│  └─────────────────────────┘   │   │ product-    │  │ order-     │    │
+│  └──────────────────────────┘    │   │ product-    │  │ order-     │    │
 │                                 │   │ service     │  │ service     │    │
 │  Pipelines lanzan pods con:     │   │ ClusterIP   │  │ ClusterIP   │    │
 │  - jnlp (conecta a 50000)       │   └──────┬──────┘  └──────┬──────┘    │
-│  - maven (mvn clean install)   │          │                │           │
+│  - maven (mvn clean install)    │          │                │           │
 │                                 │   ┌──────┴──────┐  ┌──────┴──────┐    │
-│                                 │   │ inventory- │  │ gateway-    │    │
-│                                 │   │ service    │  │ service     │    │
-│                                 │   │ ClusterIP  │  │ NodePort    │    │
+│                                 │   │ inventory- │  │ gateway-     │    │
+│                                 │   │ service    │  │ service      │    │
+│                                 │   │ ClusterIP  │  │ NodePort     │    │
 │                                 │   └────────────┘  │ 30088        │    │
-│                                 │                  └──────┬───────┘    │
-└─────────────────────────────────┴─────────────────────────┼─────────────┘
-                                                            │
+│                                 │                   └──────┬───────┘    │
+└─────────────────────────────────┴──────────────────────────┼────────────┘
+                                                             │
                                                     http://localhost:30088
 ```
 
