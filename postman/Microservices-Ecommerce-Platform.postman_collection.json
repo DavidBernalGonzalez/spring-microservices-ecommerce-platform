@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "ecommerce-microservices-001",
-		"name": "Microservices Ecommerce Platform",
-		"description": "API collection for Product, Order, Category and Inventory services",
+		"_postman_id": "ecommerce-microservices-dev",
+		"name": "Ecommerce Platform - DEV",
+		"description": "Entorno local: gateway 8088, servicios directos 8081-8083",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"variable": [
