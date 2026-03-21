@@ -1,0 +1,135 @@
+# Stack completo: solo el gateway expone puerto (igual que en Kubernetes)
+# Acceso: http://localhost:8088
+# MySQL expone puertos para herramientas (DBeaver, etc.) - puedes quitarlos si quieres aislamiento total
+
+services:
+  mysql-product:
+    image: mysql:8.0
+    container_name: mysql-product
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_products
+      MYSQL_USER: davidBernal
+      MYSQL_PASSWORD: admin1234
+      MYSQL_ROOT_PASSWORD: admin1234
+    ports:
+      - "3307:3306"  # Quitar para aislamiento total (solo gateway expuesto)
+    volumes:
+      - products-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mysql-order:
+    image: mysql:8.0
+    container_name: mysql-order
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_orders
+      MYSQL_USER: davidBernal
+      MYSQL_PASSWORD: admin1234
+      MYSQL_ROOT_PASSWORD: admin1234
+    ports:
+      - "3308:3306"  # Quitar para aislamiento total
+    volumes:
+      - orders-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mysql-inventory:
+    image: mysql:8.0
+    container_name: mysql-inventory
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_inventory
+      MYSQL_USER: davidBernal
+      MYSQL_PASSWORD: admin1234
+      MYSQL_ROOT_PASSWORD: admin1234
+    ports:
+      - "3309:3306"  # Quitar para aislamiento total
+    volumes:
+      - inventory-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  product-service:
+    build:
+      context: ./microservices-platform/product-service
+      dockerfile: Dockerfile
+    image: product-service:latest
+    # 2 replicas: usar --scale product-service=2 al levantar (ver start-dev-full.ps1)
+    environment:
+      SPRING_PROFILES_ACTIVE: k8s
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-product:3306/ms_products
+      SPRING_DATASOURCE_USERNAME: davidBernal
+      SPRING_DATASOURCE_PASSWORD: admin1234
+    depends_on:
+      mysql-product:
+        condition: service_healthy
+    # Sin ports: no expuesto, solo red interna
+
+  order-service:
+    build:
+      context: ./microservices-platform/order-service
+      dockerfile: Dockerfile
+    image: order-service:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: k8s
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-order:3306/ms_orders
+      SPRING_DATASOURCE_USERNAME: davidBernal
+      SPRING_DATASOURCE_PASSWORD: admin1234
+      SERVICES_PRODUCT_BASE_URL: http://product-service:8081
+      SERVICES_INVENTORY_BASE_URL: http://inventory-service:8083
+    depends_on:
+      mysql-order:
+        condition: service_healthy
+      product-service:
+        condition: service_started
+      inventory-service:
+        condition: service_started
+    # Sin ports: no expuesto
+
+  inventory-service:
+    build:
+      context: ./microservices-platform/inventory-service
+      dockerfile: Dockerfile
+    image: inventory-service:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: k8s
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-inventory:3306/ms_inventory
+      SPRING_DATASOURCE_USERNAME: davidBernal
+      SPRING_DATASOURCE_PASSWORD: admin1234
+      SERVICES_PRODUCT_BASE_URL: http://product-service:8081
+    depends_on:
+      mysql-inventory:
+        condition: service_healthy
+      product-service:
+        condition: service_started
+    # Sin ports: no expuesto
+
+  gateway-service:
+    build:
+      context: ./microservices-platform/gateway-service
+      dockerfile: Dockerfile
+    image: gateway-service:latest
+    ports:
+      - "8088:8088"  # ÚNICO puerto expuesto externamente
+    environment:
+      SPRING_PROFILES_ACTIVE: k8s
+    depends_on:
+      - product-service
+      - order-service
+      - inventory-service
+
+volumes:
+  products-data:
+  orders-data:
+  inventory-data:

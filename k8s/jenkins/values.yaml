@@ -20,9 +20,9 @@ controller:
     enabled: true
     size: 8Gi
 
-  # Exponer Jenkins (NodePort para Docker Desktop)
-  serviceType: NodePort
-  nodePort: 30080
+  # Exponer Jenkins (LoadBalancer = localhost en Docker Desktop; NodePort falla en Windows)
+  serviceType: LoadBalancer
+  # nodePort: 30080  # Solo si usas NodePort
 
   # Plugins iniciales
   installPlugins:

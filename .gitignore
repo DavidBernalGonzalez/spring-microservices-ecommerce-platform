@@ -1,0 +1,42 @@
+# Build outputs
+**/target/
+**/build/
+
+# IDE / Eclipse
+**/bin/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Logs (pueden contener datos sensibles)
+**/logs/
+
+# Secrets - nunca versionar
+.env
+.env.local
+.env.*.local
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# VS Code
+.vscode/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+.nb-gradle/
+
+# OS
+.DS_Store
+Thumbs.db
