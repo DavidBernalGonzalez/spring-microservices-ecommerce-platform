@@ -46,7 +46,7 @@ echo ==========================================
 echo Despliegue completado
 echo ==========================================
 echo.
-echo Gateway: http://localhost:30088
+echo Gateway: http://localhost:8088
 echo.
 echo Ver estado: kubectl get pods -n ecommerce
 echo.

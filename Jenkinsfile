@@ -99,7 +99,7 @@ spec:
                         kubectl apply -f k8s/ecommerce/inventory-service.yaml
                         kubectl apply -f k8s/ecommerce/order-service.yaml
                         kubectl apply -f k8s/ecommerce/gateway-service.yaml
-                        echo "Despliegue completado. Gateway: http://localhost:30088"
+                        echo "Despliegue completado. Gateway: http://localhost:8088 (LoadBalancer)"
                     '''
                 }
             }

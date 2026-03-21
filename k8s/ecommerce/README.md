@@ -50,8 +50,8 @@ kubectl apply -f gateway-service.yaml
 
 ## Acceso
 
-- **Gateway:** http://localhost:30088
-- **API:** http://localhost:30088/api/v1/products, /orders, /inventory, /categories
+- **Gateway:** http://localhost:8088
+- **API:** http://localhost:8088/api/v1/products, /orders, /inventory, /categories
 
 ## Verificar
 

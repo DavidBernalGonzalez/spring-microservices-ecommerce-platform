@@ -41,5 +41,4 @@ spec:
   ports:
   - port: 8088
     targetPort: 8088
-    nodePort: 30088
-  type: NodePort
+  type: LoadBalancer

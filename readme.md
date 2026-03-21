@@ -148,11 +148,11 @@ La infraestructura se divide en dos entornos dentro del mismo clúster Kubernete
 │                                   │   │ inventory-  │  │ gateway-    │    │
 │                                   │   │ service     │  │ service     │    │
 │                                   │   │ ClusterIP   │  │ NodePort    │    │
-│                                   │   └─────────────┘  │ 30088       │    │
+│                                   │   └─────────────┘  │ 8088        │    │
 │                                   │                   └──────┬───────┘    │
 └───────────────────────────────────┴──────────────────────────┼────────────┘
                                                                │
-                                                    http://localhost:30088
+                                                    http://localhost:8088
 ```
 
 ---
@@ -200,14 +200,14 @@ El pipeline usa un **agent Kubernetes** con un pod de dos contenedores:
 | `mysql-order` | `ms_orders` | 3306 |
 | `mysql-inventory` | `ms_inventory` | 3306 |
 
-**Microservicios:** Cada uno es un Deployment + Service. Los servicios de negocio usan `ClusterIP`; solo el gateway se expone con `NodePort` 30088.
+**Microservicios:** Cada uno es un Deployment + Service. Los servicios de negocio usan `ClusterIP`; solo el gateway se expone con `LoadBalancer` (localhost:8088).
 
 | Deployment | Imagen | Puerto | Tipo Service | Variables de entorno |
 |------------|--------|--------|--------------|----------------------|
 | `product-service` | `product-service:latest` | 8081 | ClusterIP | `SPRING_DATASOURCE_URL=jdbc:mysql://mysql-product:3306/ms_products` |
 | `order-service` | `order-service:latest` | 8082 | ClusterIP | Datasource + `SERVICES_PRODUCT_BASE_URL`, `SERVICES_INVENTORY_BASE_URL` |
 | `inventory-service` | `inventory-service:latest` | 8083 | ClusterIP | Datasource + `SERVICES_PRODUCT_BASE_URL` |
-| `gateway-service` | `gateway-service:latest` | 8088 | **NodePort 30088** | `SPRING_PROFILES_ACTIVE=k8s` |
+| `gateway-service` | `gateway-service:latest` | 8088 | **LoadBalancer** (localhost:8088) | `SPRING_PROFILES_ACTIVE=k8s` |
 
 **Red interna:** En el perfil `k8s`, el gateway enruta a `http://product-service:8081`, `http://order-service:8082`, `http://inventory-service:8083`. Los nombres DNS son los nombres de los Services de Kubernetes.
 
@@ -232,7 +232,7 @@ Las imágenes se construyen en local (`docker build`) y se usan con `imagePullPo
 |------------|----------------|----------------|
 | Jenkins | 8080 | `localhost:30080` (NodePort) |
 | Jenkins agent (JNLP) | 50000 | Solo dentro del clúster |
-| Gateway | 8088 | `localhost:30088` (NodePort) |
+| Gateway | 8088 | `localhost:8088` (LoadBalancer) |
 | Product, Order, Inventory | 8081, 8082, 8083 | Solo vía gateway (ClusterIP) |
 | MySQL | 3306 | Solo dentro del namespace (ClusterIP) |
 
@@ -261,7 +261,7 @@ docker compose version
 |--------|-------------|
 | `start-dev.bat` | Entorno local: levanta MySQL (si no está) y abre 4 terminales con los microservicios. Requiere Windows Terminal. |
 | `stop-db.bat` | Para y elimina los contenedores MySQL de Docker Compose. |
-| `k8s\ecommerce\deploy-all.bat` | Despliega la plataforma en Kubernetes: crea namespace, MySQL, construye imágenes Docker y despliega los 4 microservicios. Gateway en puerto **30088**. |
+| `k8s\ecommerce\deploy-all.bat` | Despliega la plataforma en Kubernetes: crea namespace, MySQL, construye imágenes Docker y despliega los 4 microservicios. Gateway tipo **LoadBalancer** (localhost:8088). |
 | `k8s\jenkins\deploy-jenkins.bat` | Despliega Jenkins en Kubernetes (Helm) para CI/CD. |
 
 ---
@@ -302,12 +302,12 @@ cd microservices-platform/gateway-service && mvnw.cmd spring-boot:run
 k8s\ecommerce\deploy-all.bat
 ```
 
-**URL:** Gateway http://localhost:30088
+**URL:** Gateway http://localhost:8088
 
 ### Verificar que todo funciona
 
 - **Gateway (local):** http://localhost:8088/actuator/health  
-- **Gateway (K8s):** http://localhost:30088/actuator/health  
+- **Gateway (K8s):** http://localhost:8088/actuator/health  
 - **Productos (vía gateway):** http://localhost:8088/api/v1/products  
 - **Categorías (vía gateway):** http://localhost:8088/api/v1/categories  
 - **Órdenes (vía gateway):** http://localhost:8088/api/v1/orders  
@@ -425,7 +425,7 @@ Construye imágenes Docker de cada microservicio
     ↓
 Despliega en Kubernetes (MySQL + 4 servicios)
     ↓
-App disponible en http://localhost:30088
+App disponible en http://localhost:8088
 ```
 
 ### Componentes
@@ -434,7 +434,7 @@ App disponible en http://localhost:30088
 |------------|-----|
 | **Jenkins** | Servidor de CI: escucha el repositorio, lanza el pipeline en cada push y ejecuta `mvn clean install` en cada microservicio dentro de un pod de Kubernetes. |
 | **Docker** | Empaqueta cada microservicio (Java + JAR) en una imagen. El `Dockerfile` de cada servicio usa Maven para compilar y Eclipse Temurin para ejecutar. |
-| **Kubernetes** | Orquesta los contenedores: crea los pods de MySQL, los servicios (product, order, inventory, gateway) y expone el gateway por NodePort 30088. |
+| **Kubernetes** | Orquesta los contenedores: crea los pods de MySQL, los servicios (product, order, inventory, gateway) y expone el gateway por LoadBalancer (localhost:8088). |
 
 ### Cómo ponerlo en marcha
 
@@ -450,7 +450,7 @@ App disponible en http://localhost:30088
    ```bash
    k8s\ecommerce\deploy-all.bat
    ```
-   Este script construye las imágenes Docker, las despliega en Kubernetes y deja la app accesible en http://localhost:30088.
+   Este script construye las imágenes Docker, las despliega en Kubernetes y deja la app accesible en http://localhost:8088.
 
 ### Archivos clave
 
@@ -483,7 +483,7 @@ Dos colecciones según entorno:
 | Colección | Entorno | Gateway | Uso |
 |-----------|---------|---------|-----|
 | `Microservices-Ecommerce-Platform.postman_collection.json` | Local | http://localhost:8088 | Desarrollo con `start-dev.bat` |
-| `Ecommerce-Platform-PROD.postman_collection.json` | Kubernetes | http://localhost:30088 | Despliegue con `deploy-all.bat` |
+| `Ecommerce-Platform-PROD.postman_collection.json` | Kubernetes | http://localhost:8088 | Despliegue con `deploy-all.bat` |
 
 Importa la colección que corresponda. Las variables de URL ya vienen configuradas.
 
