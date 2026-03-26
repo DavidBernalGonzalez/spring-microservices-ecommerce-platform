@@ -36,7 +36,9 @@ pipeline {
             }
         }
         stage('Deploy to Kubernetes (solo rama dev)') {
+            // Sin beforeAgent true, Jenkins evalúa agent (kubernetes) antes que when: main falla sin cloud K8s.
             when {
+                beforeAgent true
                 expression {
                     def b = env.BRANCH_NAME ?: ''
                     def g = env.GIT_BRANCH ?: ''
