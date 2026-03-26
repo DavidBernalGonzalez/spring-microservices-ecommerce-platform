@@ -1,5 +1,7 @@
 @echo off
 setlocal
+set "SKIP_PAUSE=0"
+if /i "%~1"=="nopause" set "SKIP_PAUSE=1"
 
 echo ==========================================
 echo Deploying Jenkins on Kubernetes
@@ -14,7 +16,7 @@ if errorlevel 1 (
     echo Instalacion: choco install kubernetes-helm
     echo O: https://helm.sh/docs/intro/install/
     echo.
-    pause
+    if "%SKIP_PAUSE%"=="0" pause
     exit /b 1
 )
 
@@ -24,7 +26,7 @@ if errorlevel 1 (
     echo [ERROR] No hay conexion al cluster Kubernetes.
     echo Asegurate de que Docker Desktop tiene Kubernetes habilitado.
     echo.
-    pause
+    if "%SKIP_PAUSE%"=="0" pause
     exit /b 1
 )
 
@@ -59,9 +61,13 @@ echo ==========================================
 echo Jenkins desplegado
 echo ==========================================
 echo.
-echo Acceso: http://localhost:30080
+echo Acceso (LoadBalancer en Docker Desktop, suele ser puerto 8080):
+echo   http://localhost:8080
+echo Si no abre, ejecuta: k8s\jenkins\jenkins-port-forward.bat y usa la URL que indique.
+echo.
+kubectl get svc -n jenkins jenkins
 echo.
 echo Obtener password inicial:
 echo   kubectl exec -n jenkins deployment/jenkins -c jenkins -- cat /run/secrets/additional/chart-admin-password
 echo.
-pause
+if "%SKIP_PAUSE%"=="0" pause

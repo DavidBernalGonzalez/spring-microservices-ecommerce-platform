@@ -265,6 +265,7 @@ docker compose version
 | `restart-dev.bat` | Ejecuta `stop-dev.bat` y luego `start-dev.bat` (reinicio completo). |
 | `k8s\ecommerce\deploy-all.bat` | Despliega la plataforma en Kubernetes: crea namespace, MySQL, construye imágenes Docker y despliega los 4 microservicios. Gateway en puerto **30088**. |
 | `k8s\jenkins\deploy-jenkins.bat` | Despliega Jenkins en Kubernetes (Helm) para CI/CD. |
+| `k8s\jenkins\ensure-jenkins.bat` | Igual que el anterior pero espera a que K8s este listo y no pide tecla al final; util para un acceso directo en el inicio de Windows. |
 
 ---
 
