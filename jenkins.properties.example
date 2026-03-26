@@ -1,0 +1,4 @@
+# Copia este archivo a "jenkins.properties" en la raíz del repo y haz commit en la rama dev
+# para activar el stage "Deploy to Kubernetes" en Jenkins (además de tener cloud K8s).
+# También puedes definir en Jenkins: ENABLE_K8S_DEPLOY=true (sin comillas raras).
+ENABLE_K8S_DEPLOY=true

@@ -1,11 +1,13 @@
 // =============================================================================
 // Un solo Jenkinsfile para TODAS las ramas (main, dev, feature/*).
-// - main y demás: solo el stage "CI - Maven".
-// - dev: stash JARs; deploy a K8s SOLO si ENABLE_K8S_DEPLOY=true (env en Jenkins).
-//   Sin eso, el job no intenta agent { kubernetes } y no falla con "No Kubernetes cloud".
-//   Para desplegar: Manage Jenkins → Configure System → Global properties → Environment variables:
-//   ENABLE_K8S_DEPLOY=true  y tener Kubernetes cloud + plugin Kubernetes configurados.
-// Local: bash scripts/ci-local.sh  |  scripts\ci-local.bat
+// Deploy en dev si (cualquiera):
+//   A) Variable Jenkins ENABLE_K8S_DEPLOY = true / 1 / yes (sin importar mayúsculas)
+//   B) Archivo jenkins.properties en la raíz del repo con ENABLE_K8S_DEPLOY=true
+//      (copia jenkins.properties.example → jenkins.properties y commit en dev).
+// Multibranch: si la variable global no llega al job, usa jenkins.properties en el repo.
+// Requiere además Kubernetes cloud en Manage Jenkins → Clouds para que el deploy no falle.
+// Tras el CI se define env.K8S_DEPLOY_ENABLED (variable Jenkins + jenkins.properties en repo).
+// Local: bash scripts/ci-local.sh  |  scripts\dev-local-test-and-deploy.bat
 // =============================================================================
 
 pipeline {
@@ -16,6 +18,21 @@ pipeline {
             steps {
                 sh 'chmod +x scripts/ci-local.sh && bash scripts/ci-local.sh'
                 script {
+                    def deployFromFile = false
+                    if (fileExists('jenkins.properties')) {
+                        def content = readFile('jenkins.properties')
+                        def m = (content =~ /(?m)^\s*ENABLE_K8S_DEPLOY\s*=\s*(\S+)/)
+                        if (m.find()) {
+                            def val = m.group(1).trim()
+                            if (val.equalsIgnoreCase('true') || val == '1' || val.equalsIgnoreCase('yes')) {
+                                deployFromFile = true
+                            }
+                        }
+                    }
+                    def envVal = env.ENABLE_K8S_DEPLOY?.trim()
+                    def envEnabled = envVal && (envVal.equalsIgnoreCase('true') || envVal == '1' || envVal.equalsIgnoreCase('yes'))
+                    env.K8S_DEPLOY_ENABLED = (envEnabled || deployFromFile) ? 'true' : 'false'
+
                     def b = env.BRANCH_NAME ?: ''
                     def g = env.GIT_BRANCH ?: ''
                     def isDev = b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
@@ -32,12 +49,12 @@ pipeline {
                     def b = env.BRANCH_NAME ?: ''
                     def g = env.GIT_BRANCH ?: ''
                     def isDev = b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
-                    return isDev && env.ENABLE_K8S_DEPLOY != 'true'
+                    return isDev && env.K8S_DEPLOY_ENABLED != 'true'
                 }
             }
             agent any
             steps {
-                echo 'Rama dev: deploy no ejecutado. Para activarlo: variable ENABLE_K8S_DEPLOY=true en Jenkins y cloud Kubernetes configurado (Manage Jenkins → Clouds).'
+                echo 'Rama dev: deploy no ejecutado. Actívalo con ENABLE_K8S_DEPLOY=true/1/yes en Jenkins, o jenkins.properties en el repo (ver jenkins.properties.example), y cloud Kubernetes (Manage Jenkins → Clouds).'
             }
         }
         stage('Deploy to Kubernetes (solo rama dev)') {
@@ -47,7 +64,7 @@ pipeline {
                     def b = env.BRANCH_NAME ?: ''
                     def g = env.GIT_BRANCH ?: ''
                     def isDev = b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
-                    return isDev && env.ENABLE_K8S_DEPLOY == 'true'
+                    return isDev && env.K8S_DEPLOY_ENABLED == 'true'
                 }
             }
             agent {
