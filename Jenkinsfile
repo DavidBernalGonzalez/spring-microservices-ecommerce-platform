@@ -30,8 +30,18 @@ pipeline {
                         }
                     }
                     def envVal = env.ENABLE_K8S_DEPLOY?.trim()
+                    // Multibranch a veces no rellena env.* aunque la variable exista en el proceso del agente
+                    if (!envVal) {
+                        try {
+                            envVal = sh(script: 'echo -n "${ENABLE_K8S_DEPLOY:-}"', returnStdout: true).trim()
+                        } catch (Throwable ignored) {
+                            envVal = ''
+                        }
+                    }
                     def envEnabled = envVal && (envVal.equalsIgnoreCase('true') || envVal == '1' || envVal.equalsIgnoreCase('yes'))
                     env.K8S_DEPLOY_ENABLED = (envEnabled || deployFromFile) ? 'true' : 'false'
+
+                    echo "[K8S deploy flag] jenkins.properties presente=${fileExists('jenkins.properties')} ENABLE_K8S_DEPLOY (env/shell)='${envVal}' desde archivo=${deployFromFile} => K8S_DEPLOY_ENABLED=${env.K8S_DEPLOY_ENABLED} rama=${env.BRANCH_NAME}"
 
                     def b = env.BRANCH_NAME ?: ''
                     def g = env.GIT_BRANCH ?: ''
