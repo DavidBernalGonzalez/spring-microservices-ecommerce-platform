@@ -1,4 +1,4 @@
-# Spring Microservices Ecommerce Platform
+# Spring Microservices Ecommerce Platform 
 
 Plataforma de e-commerce basada en **microservicios** con Spring Boot, Spring Cloud Gateway y bases de datos MySQL independientes.
 
@@ -462,7 +462,7 @@ App disponible en http://localhost:30088
 
 | Archivo | Descripción |
 |---------|-------------|
-| `Jenkinsfile` | Define el pipeline: agent Kubernetes con Maven, stages para cada microservicio. |
+| `Jenkinsfile` | CI con **Docker** (Maven) en todas las ramas; CD a Kubernetes solo en rama **dev** (agente Kubernetes + stash de JARs). |
 | `k8s/jenkins/` | Helm values y JCasC para desplegar Jenkins en K8s. |
 | `k8s/ecommerce/` | Manifiestos YAML para MySQL y los 4 microservicios. |
 | `*/Dockerfile` | Cada microservicio tiene su Dockerfile multi-stage (build + run). |
