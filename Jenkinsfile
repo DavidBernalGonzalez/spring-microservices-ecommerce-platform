@@ -1,28 +1,43 @@
-// Ramas no dev (p. ej. main): solo CI Maven con Docker — sin Kubernetes en el pipeline.
-// Rama dev: mismo CI + Deploy ejecutando k8s/ecommerce/deploy-all.sh en un Pod con Docker + kubectl.
-// El stage Deploy usa when { beforeAgent true } para no exigir cloud K8s en builds de main.
+// CI: Pod K8s con imagen Maven (executor Jenkins; no despliega la app). No requiere docker en el controller.
+// main: solo este stage. dev: + Deploy (deploy-all.sh) con when { beforeAgent true }.
+// Si no tienes cloud Kubernetes en Jenkins, instala Docker en el agente y usa agent { docker { image '...' } } en CI.
 
 pipeline {
     agent none
     stages {
         stage('CI - Maven (todas las ramas)') {
             agent {
-                docker {
-                    image 'maven:3.9-eclipse-temurin-21'
+                kubernetes {
+                    yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: maven
+    image: maven:3.9-eclipse-temurin-21
+    command: ['cat']
+    tty: true
+  - name: jnlp
+    env:
+    - name: JENKINS_TUNNEL
+      value: "jenkins-agent.jenkins.svc.cluster.local:50000"
+"""
                 }
             }
             steps {
-                dir('microservices-platform/product-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/inventory-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/order-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/gateway-service') {
-                    sh 'mvn clean install'
+                container('maven') {
+                    dir('microservices-platform/product-service') {
+                        sh 'mvn clean install'
+                    }
+                    dir('microservices-platform/inventory-service') {
+                        sh 'mvn clean install'
+                    }
+                    dir('microservices-platform/order-service') {
+                        sh 'mvn clean install'
+                    }
+                    dir('microservices-platform/gateway-service') {
+                        sh 'mvn clean install'
+                    }
                 }
             }
         }
