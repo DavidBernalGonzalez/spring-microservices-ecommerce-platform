@@ -1,7 +1,10 @@
 // =============================================================================
 // Un solo Jenkinsfile para TODAS las ramas (main, dev, feature/*).
 // - main y demás: solo el stage "CI - Maven".
-// - dev: CI + "Deploy to Kubernetes" (when + beforeAgent true; no exige K8s en main).
+// - dev: stash JARs; deploy a K8s SOLO si ENABLE_K8S_DEPLOY=true (env en Jenkins).
+//   Sin eso, el job no intenta agent { kubernetes } y no falla con "No Kubernetes cloud".
+//   Para desplegar: Manage Jenkins → Configure System → Global properties → Environment variables:
+//   ENABLE_K8S_DEPLOY=true  y tener Kubernetes cloud + plugin Kubernetes configurados.
 // Local: bash scripts/ci-local.sh  |  scripts\ci-local.bat
 // =============================================================================
 
@@ -22,13 +25,29 @@ pipeline {
                 }
             }
         }
+        stage('Deploy a Kubernetes omitido (dev sin ENABLE_K8S_DEPLOY)') {
+            when {
+                beforeAgent true
+                expression {
+                    def b = env.BRANCH_NAME ?: ''
+                    def g = env.GIT_BRANCH ?: ''
+                    def isDev = b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
+                    return isDev && env.ENABLE_K8S_DEPLOY != 'true'
+                }
+            }
+            agent any
+            steps {
+                echo 'Rama dev: deploy no ejecutado. Para activarlo: variable ENABLE_K8S_DEPLOY=true en Jenkins y cloud Kubernetes configurado (Manage Jenkins → Clouds).'
+            }
+        }
         stage('Deploy to Kubernetes (solo rama dev)') {
             when {
                 beforeAgent true
                 expression {
                     def b = env.BRANCH_NAME ?: ''
                     def g = env.GIT_BRANCH ?: ''
-                    return b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
+                    def isDev = b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
+                    return isDev && env.ENABLE_K8S_DEPLOY == 'true'
                 }
             }
             agent {

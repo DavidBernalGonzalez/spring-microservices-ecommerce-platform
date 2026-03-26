@@ -50,4 +50,5 @@ echo Gateway: http://localhost:30088
 echo.
 echo Ver estado: kubectl get pods -n ecommerce
 echo.
+if "%SKIP_DEPLOY_PAUSE%"=="1" exit /b 0
 pause
