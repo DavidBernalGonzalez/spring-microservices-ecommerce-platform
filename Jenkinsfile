@@ -1,36 +1,50 @@
-// main (y otras ramas): CI con Docker (Maven) — no hace falta Kubernetes cloud.
-// dev: mismo CI + stage Deploy con agente Kubernetes (imagenes + kubectl).
-// Requiere plugin "Docker Pipeline" y Docker accesible desde Jenkins.
-// Si el agente Docker falla en tu Jenkins, configura Kubernetes cloud y usa solo rama dev con el mismo pod para todo (alternativa).
+// CI: Pod Kubernetes con contenedor Maven (no requiere Docker en el controller).
+// dev: Deploy en otro Pod (docker + kubectl). Requiere plugin Kubernetes y cloud configurado.
+// Alternativa local: instalar Docker en el agente Jenkins y volver a agent { docker { image '...' } }.
 
 pipeline {
     agent none
     stages {
         stage('CI - Maven (todas las ramas)') {
             agent {
-                docker {
-                    image 'maven:3.9-eclipse-temurin-21'
+                kubernetes {
+                    yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: maven
+    image: maven:3.9-eclipse-temurin-21
+    command: ['cat']
+    tty: true
+  - name: jnlp
+    env:
+    - name: JENKINS_TUNNEL
+      value: "jenkins-agent.jenkins.svc.cluster.local:50000"
+"""
                 }
             }
             steps {
-                dir('microservices-platform/product-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/inventory-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/order-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/gateway-service') {
-                    sh 'mvn clean install'
-                }
-                script {
-                    def b = env.BRANCH_NAME ?: ''
-                    def g = env.GIT_BRANCH ?: ''
-                    def isDev = b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
-                    if (isDev) {
-                        stash name: 'maven-targets', includes: 'microservices-platform/**/target/*.jar', allowEmpty: false
+                container('maven') {
+                    dir('microservices-platform/product-service') {
+                        sh 'mvn clean install'
+                    }
+                    dir('microservices-platform/inventory-service') {
+                        sh 'mvn clean install'
+                    }
+                    dir('microservices-platform/order-service') {
+                        sh 'mvn clean install'
+                    }
+                    dir('microservices-platform/gateway-service') {
+                        sh 'mvn clean install'
+                    }
+                    script {
+                        def b = env.BRANCH_NAME ?: ''
+                        def g = env.GIT_BRANCH ?: ''
+                        def isDev = b == 'dev' || g == 'origin/dev' || g?.endsWith('/dev')
+                        if (isDev) {
+                            stash name: 'maven-targets', includes: 'microservices-platform/**/target/*.jar', allowEmpty: false
+                        }
                     }
                 }
             }
