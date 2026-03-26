@@ -1,30 +1,17 @@
-// CI: agent Docker (Maven). No exige Kubernetes cloud (sirve para main y Jenkins sin K8s).
-// El nodo que ejecute el stage debe tener Docker instalado y accesible (plugin Docker Pipeline).
-// Si el controller no tiene Docker, asigna un agente con label (p. ej. docker) o instala Docker ahí.
-// dev — Deploy: sigue usando Kubernetes (requiere cloud + plugin Kubernetes en ese mismo Jenkins).
+// =============================================================================
+// Un solo Jenkinsfile para TODAS las ramas (main, dev, feature/*).
+// - main y demás: solo el stage "CI - Maven".
+// - dev: CI + "Deploy to Kubernetes" (when + beforeAgent true; no exige K8s en main).
+// Local: bash scripts/ci-local.sh  |  scripts\ci-local.bat
+// =============================================================================
 
 pipeline {
     agent none
     stages {
         stage('CI - Maven (todas las ramas)') {
-            agent {
-                docker {
-                    image 'maven:3.9-eclipse-temurin-21'
-                }
-            }
+            agent any
             steps {
-                dir('microservices-platform/product-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/inventory-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/order-service') {
-                    sh 'mvn clean install'
-                }
-                dir('microservices-platform/gateway-service') {
-                    sh 'mvn clean install'
-                }
+                sh 'chmod +x scripts/ci-local.sh && bash scripts/ci-local.sh'
                 script {
                     def b = env.BRANCH_NAME ?: ''
                     def g = env.GIT_BRANCH ?: ''
@@ -36,7 +23,6 @@ pipeline {
             }
         }
         stage('Deploy to Kubernetes (solo rama dev)') {
-            // Sin beforeAgent true, Jenkins evalúa agent (kubernetes) antes que when: main falla sin cloud K8s.
             when {
                 beforeAgent true
                 expression {
