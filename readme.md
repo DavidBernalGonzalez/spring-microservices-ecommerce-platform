@@ -107,7 +107,8 @@ spring-microservices-ecommerce-platform/
 ├── docs/                     # Documentación adicional (Jenkins, etc.)
 ├── docker-compose.yml        # Bases de datos MySQL (entorno local)
 ├── start-dev.bat             # Arranca entorno local (DB + microservicios)
-├── stop-db.bat               # Para bases de datos Docker
+├── stop-dev.bat              # Para todo: MySQL en Docker + puertos 8081/8082/8083/8088
+├── restart-dev.bat           # stop-dev + start-dev
 └── README.md
 ```
 
@@ -260,7 +261,8 @@ docker compose version
 | Script | Descripción |
 |--------|-------------|
 | `start-dev.bat` | Entorno local: levanta MySQL (si no está) y abre 4 terminales con los microservicios. Requiere Windows Terminal. |
-| `stop-db.bat` | Para y elimina los contenedores MySQL de Docker Compose. |
+| `stop-dev.bat` | Para el entorno local completo: `docker compose down` y procesos en los puertos 8081, 8082, 8083 y 8088. |
+| `restart-dev.bat` | Ejecuta `stop-dev.bat` y luego `start-dev.bat` (reinicio completo). |
 | `k8s\ecommerce\deploy-all.bat` | Despliega la plataforma en Kubernetes: crea namespace, MySQL, construye imágenes Docker y despliega los 4 microservicios. Gateway en puerto **30088**. |
 | `k8s\jenkins\deploy-jenkins.bat` | Despliega Jenkins en Kubernetes (Helm) para CI/CD. |
 
@@ -388,11 +390,14 @@ Cada microservicio tiene su **propia base de datos** (patrón *database per serv
 
 **Volúmenes Docker:** `products-data`, `orders-data`, `inventory-data` (persisten los datos al parar contenedores).
 
-**Parar bases de datos:**
+**Parar entorno:**
 
 ```bash
+# Solo bases MySQL (dejas Spring corriendo)
 docker compose down
-# o ejecutar stop-db.bat
+
+# Todo el entorno local (MySQL + puertos 8081–8088)
+stop-dev.bat
 ```
 
 ---

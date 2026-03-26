@@ -1,0 +1,6 @@
+# Imagen solo runtime: requiere target/*.jar ya generado (p. ej. tras mvn clean install en CI).
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY target/*.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"]
