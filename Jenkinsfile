@@ -5,7 +5,7 @@
 //   B) Archivo jenkins.properties en la raíz del repo con ENABLE_K8S_DEPLOY=true
 //      (copia jenkins.properties.example → jenkins.properties y commit en dev).
 // Multibranch: si la variable global no llega al job, usa jenkins.properties en el repo.
-// Requiere además Kubernetes cloud en Manage Jenkins → Clouds para que el deploy no falle.
+// Deploy usa agent any (Docker + kubectl en el nodo); no hace falta Kubernetes cloud salvo agentes dinámicos en K8s.
 // Tras el CI se define env.K8S_DEPLOY_ENABLED (variable Jenkins + jenkins.properties en repo).
 // Local: bash scripts/ci-local.sh  |  scripts\dev-local-test-and-deploy.bat
 // =============================================================================
@@ -64,7 +64,7 @@ pipeline {
             }
             agent any
             steps {
-                echo 'Rama dev: deploy no ejecutado. Actívalo con ENABLE_K8S_DEPLOY=true/1/yes en Jenkins, o jenkins.properties en el repo (ver jenkins.properties.example), y cloud Kubernetes (Manage Jenkins → Clouds).'
+                echo 'Rama dev: deploy no ejecutado. Actívalo con ENABLE_K8S_DEPLOY=true/1/yes en Jenkins o jenkins.properties en el repo (ver jenkins.properties.example).'
             }
         }
         stage('Deploy to Kubernetes (solo rama dev)') {
@@ -77,56 +77,35 @@ pipeline {
                     return isDev && env.K8S_DEPLOY_ENABLED == 'true'
                 }
             }
-            agent {
-                kubernetes {
-                    yaml """
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: docker
-    image: docker:24
-    command: ['cat']
-    tty: true
-    volumeMounts:
-    - name: docker-sock
-      mountPath: /var/run/docker.sock
-  - name: jnlp
-    env:
-    - name: JENKINS_TUNNEL
-      value: "jenkins-agent.jenkins.svc.cluster.local:50000"
-  volumes:
-  - name: docker-sock
-    hostPath:
-      path: /var/run/docker.sock
-"""
-                }
-            }
+            agent any
             steps {
+                // Mismo patrón que el CI: nodo con Docker + acceso al cluster (kubeconfig en el agente).
+                // checkout implícito del stage deja los YAML; unstash pone los JAR del CI encima.
                 unstash 'maven-targets'
                 timeout(time: 20, unit: 'MINUTES') {
-                    container('docker') {
-                        sh '''
-                            echo "Imagenes desde JARs del CI..."
-                            docker build -t product-service:latest -f microservices-platform/product-service/Dockerfile.runtime microservices-platform/product-service
-                            docker build -t inventory-service:latest -f microservices-platform/inventory-service/Dockerfile.runtime microservices-platform/inventory-service
-                            docker build -t order-service:latest -f microservices-platform/order-service/Dockerfile.runtime microservices-platform/order-service
-                            docker build -t gateway-service:latest -f microservices-platform/gateway-service/Dockerfile.runtime microservices-platform/gateway-service
-                            wget -qO /usr/local/bin/kubectl "https://dl.k8s.io/release/v1.31.2/bin/linux/amd64/kubectl"
-                            chmod +x /usr/local/bin/kubectl
-                            kubectl apply -f k8s/ecommerce/namespace.yaml
-                            kubectl apply -f k8s/ecommerce/mysql-product.yaml
-                            kubectl apply -f k8s/ecommerce/mysql-order.yaml
-                            kubectl apply -f k8s/ecommerce/mysql-inventory.yaml
-                            echo "Esperando MySQL (60s)..."
-                            sleep 60
-                            kubectl apply -f k8s/ecommerce/product-service.yaml
-                            kubectl apply -f k8s/ecommerce/inventory-service.yaml
-                            kubectl apply -f k8s/ecommerce/order-service.yaml
-                            kubectl apply -f k8s/ecommerce/gateway-service.yaml
-                            echo "Despliegue OK. Gateway: http://localhost:30088 (NodePort)"
-                        '''
-                    }
+                    sh '''
+                        echo "Imagenes desde JARs del CI..."
+                        docker build -t product-service:latest -f microservices-platform/product-service/Dockerfile.runtime microservices-platform/product-service
+                        docker build -t inventory-service:latest -f microservices-platform/inventory-service/Dockerfile.runtime microservices-platform/inventory-service
+                        docker build -t order-service:latest -f microservices-platform/order-service/Dockerfile.runtime microservices-platform/order-service
+                        docker build -t gateway-service:latest -f microservices-platform/gateway-service/Dockerfile.runtime microservices-platform/gateway-service
+                        if ! command -v kubectl >/dev/null 2>&1; then
+                            wget -qO /tmp/kubectl "https://dl.k8s.io/release/v1.31.2/bin/linux/amd64/kubectl"
+                            chmod +x /tmp/kubectl
+                            export PATH="/tmp:$PATH"
+                        fi
+                        kubectl apply -f k8s/ecommerce/namespace.yaml
+                        kubectl apply -f k8s/ecommerce/mysql-product.yaml
+                        kubectl apply -f k8s/ecommerce/mysql-order.yaml
+                        kubectl apply -f k8s/ecommerce/mysql-inventory.yaml
+                        echo "Esperando MySQL (60s)..."
+                        sleep 60
+                        kubectl apply -f k8s/ecommerce/product-service.yaml
+                        kubectl apply -f k8s/ecommerce/inventory-service.yaml
+                        kubectl apply -f k8s/ecommerce/order-service.yaml
+                        kubectl apply -f k8s/ecommerce/gateway-service.yaml
+                        echo "Despliegue OK. Gateway: http://localhost:30088 (NodePort)"
+                    '''
                 }
             }
         }
