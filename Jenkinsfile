@@ -79,8 +79,8 @@ pipeline {
             }
             agent any
             steps {
-                // Mismo patrón que el CI: nodo con Docker + acceso al cluster (kubeconfig en el agente).
-                // checkout implícito del stage deja los YAML; unstash pone los JAR del CI encima.
+                // Nodo con Docker + kubeconfig (o in-cluster). checkout + unstash cubren workspace nuevo o reutilizado.
+                checkout scm
                 unstash 'maven-targets'
                 timeout(time: 20, unit: 'MINUTES') {
                     sh '''
