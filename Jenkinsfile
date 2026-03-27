@@ -89,6 +89,16 @@ pipeline {
                 timeout(time: 20, unit: 'MINUTES') {
                     sh '''
                         set -e
+                        fetch_url() {
+                            if command -v curl >/dev/null 2>&1; then
+                                curl -fsSL -o "$2" "$1"
+                            elif command -v wget >/dev/null 2>&1; then
+                                wget -qO "$2" "$1"
+                            else
+                                echo "ERROR: Instala curl o wget en el agente Jenkins para descargar docker/kubectl."
+                                exit 1
+                            fi
+                        }
                         ARCH=$(uname -m)
                         case "$ARCH" in
                             x86_64) K8S_ARCH=amd64; DOCKER_ARCH=x86_64 ;;
@@ -99,7 +109,7 @@ pipeline {
                         if ! command -v docker >/dev/null 2>&1; then
                             echo "docker no está en PATH; descargando cliente estático (hace falta daemon en /var/run/docker.sock)..."
                             DOCKER_VER=24.0.9
-                            wget -qO /tmp/docker-static.tgz "https://download.docker.com/linux/static/stable/${DOCKER_ARCH}/docker-${DOCKER_VER}.tgz"
+                            fetch_url "https://download.docker.com/linux/static/stable/${DOCKER_ARCH}/docker-${DOCKER_VER}.tgz" /tmp/docker-static.tgz
                             rm -rf /tmp/docker-cli-extract
                             mkdir -p /tmp/docker-cli-extract
                             tar -xzf /tmp/docker-static.tgz -C /tmp/docker-cli-extract
@@ -113,7 +123,7 @@ pipeline {
                         }
 
                         if ! command -v kubectl >/dev/null 2>&1; then
-                            wget -qO /tmp/kubectl "https://dl.k8s.io/release/v1.31.2/bin/linux/${K8S_ARCH}/kubectl"
+                            fetch_url "https://dl.k8s.io/release/v1.31.2/bin/linux/${K8S_ARCH}/kubectl" /tmp/kubectl
                             chmod +x /tmp/kubectl
                             export PATH="/tmp:$PATH"
                         fi
